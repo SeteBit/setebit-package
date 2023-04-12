@@ -8,9 +8,11 @@ class SetebitPackageServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
+            ]);
+        }
     }
 
     public function register(): void
