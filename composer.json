@@ -1,0 +1,53 @@
+{
+    "name": "setebit/setebit-package",
+    "description": "",
+    "keywords": [
+        "setebit",
+        "common-package-setebit"
+    ],
+    "homepage": "https://github.com/setebit/setebit-package",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Setebit",
+            "email": "setebitdev@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^9.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7",
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Setebit\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Setebit\\SetebitPackage\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SetebitPackageServiceProvider"
+            ]
+        }
+    }
+}
