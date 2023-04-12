@@ -1,12 +1,12 @@
 <?php
 
-namespace Setebit\Http\Middleware;
+namespace Setebit\Package\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Closure;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
-use Talyssonlima\SetebitPackage\AuthData;
+use Setebit\Package\AuthData;
 
 class BindTheHeader
 {

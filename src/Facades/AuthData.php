@@ -1,6 +1,6 @@
 <?php
 
-namespace Setebit\Facades;
+namespace Setebit\Package\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -14,6 +14,6 @@ class AuthData extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Talyssonlima\SetebitPackage\AuthData::class;
+        return \Setebit\Package\AuthData::class;
     }
 }

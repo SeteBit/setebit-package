@@ -1,6 +1,6 @@
 <?php
 
-use Setebit\Facades\AuthData;
+use Setebit\Package\Facades\AuthData;
 
 if (!function_exists('tenant')) {
     function tenant(): object

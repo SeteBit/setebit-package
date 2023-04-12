@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Setebit\\": "src"
+            "Setebit\\Package\\": "src"
         },
         "files": [
             "src/helpers.php"
@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Setebit\\SetebitPackageServiceProvider"
+                "Setebit\\Package\\SetebitPackageServiceProvider"
             ]
         }
     }

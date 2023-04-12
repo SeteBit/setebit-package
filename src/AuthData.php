@@ -1,6 +1,6 @@
 <?php
 
-namespace Setebit;
+namespace Setebit\Package;
 
 readonly final class AuthData
 {
