@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Setebit\\SetebitPackage\\Tests\\": "tests"
+            "Setebit\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SetebitPackageServiceProvider"
+                "Setebit\\SetebitPackageServiceProvider"
             ]
         }
     }
