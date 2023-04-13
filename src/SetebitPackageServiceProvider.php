@@ -2,7 +2,6 @@
 
 namespace Setebit\Package;
 
-use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 use Setebit\Package\Http\Middleware\BindTheHeader;
 
@@ -10,13 +9,11 @@ class SetebitPackageServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            app('router')->aliasMiddleware('auth-data', BindTheHeader::class);
+        app('router')->aliasMiddleware('auth-data', BindTheHeader::class);
 
-            $this->publishes([
-                __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
-            ]);
-        }
+        $this->publishes([
+            __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
+        ]);
     }
 
     public function register(): void
