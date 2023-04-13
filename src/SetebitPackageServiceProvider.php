@@ -11,8 +11,7 @@ class SetebitPackageServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
-            $route = $this->app->make(Route::class);
-            $route->aliasMiddleware('auth-data', BindTheHeader::class);
+            app('route')->aliasMiddleware('auth-data', BindTheHeader::class);
 
             $this->publishes([
                 __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
