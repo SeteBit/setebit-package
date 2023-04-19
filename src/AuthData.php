@@ -9,23 +9,23 @@ readonly final class AuthData
     ) {
     }
 
-    public function tenant(): object
+    public function tenant(): object|null
     {
-        return $this->headers['tenant'] ?? (object)[];
+        return $this->headers['tenant'] ?? null;
     }
 
-    public function user(): object
+    public function user(): object|null
     {
-        return $this->headers['user'] ?? (object)[];
+        return $this->headers['user'] ?? null;
     }
 
-    public function token(): string
+    public function token(): string|null
     {
-        return $this->headers['token'] ?? '';
+        return $this->headers['token'] ?? null;
     }
 
-    public function permissions(): object
+    public function permissions(): object|null
     {
-        return $this->headers['permissions'] ?? (object)[];
+        return $this->headers['permissions'] ?? null;
     }
 }
