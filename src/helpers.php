@@ -1,6 +1,7 @@
 <?php
 
 use Setebit\Package\Facades\AuthData;
+use Setebit\Package\WildcardPermission;
 
 if (!function_exists('tenant')) {
     function tenant(): object|null
@@ -27,5 +28,20 @@ if (!function_exists('token')) {
     function token(): object|null
     {
         return AuthData::token();
+    }
+}
+
+if (!function_exists('can')) {
+    function can(string $permission): bool
+    {
+        foreach (AuthData::permissions()->permissions as $userPermission) {
+            $wildcardpermission = new WildcardPermission($userPermission);
+
+            if ($wildcardpermission->implies($permission)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
