@@ -31,13 +31,21 @@ if (!function_exists('token')) {
     }
 }
 
+if (!function_exists('uniqueTicketCode')) {
+    function uniqueTicketCode(string $suffix): string
+    {
+        $code = strtoupper(substr(uniqid(), 1, 13));
+        return $code . $suffix;
+    }
+}
+
 if (!function_exists('can')) {
     function can(string $permission): bool
     {
         foreach (AuthData::permissions()->permissions as $userPermission) {
-            $wildcardpermission = new WildcardPermission($userPermission);
+            $wildcardPermission = new WildcardPermission($userPermission);
 
-            if ($wildcardpermission->implies($permission)) {
+            if ($wildcardPermission->implies($permission)) {
                 return true;
             }
         }
