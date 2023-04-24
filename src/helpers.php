@@ -31,13 +31,13 @@ if (!function_exists('token')) {
     }
 }
 
-if (!function_exists('can')) {
-    function can(string $permission): bool
+if (!function_exists('hasPermission')) {
+    function hasPermission(array $permission): bool
     {
         foreach (AuthData::permissions()->permissions as $userPermission) {
             $wildcardpermission = new WildcardPermission($userPermission);
 
-            if ($wildcardpermission->implies($permission)) {
+            if ($wildcardpermission->implies($permission['name'])) {
                 return true;
             }
         }
