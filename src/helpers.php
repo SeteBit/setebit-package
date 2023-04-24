@@ -34,10 +34,12 @@ if (!function_exists('token')) {
 if (!function_exists('hasPermission')) {
     function hasPermission(array $permission): bool
     {
+        $permissionName = $permission['name'];
+
         foreach (AuthData::permissions()->permissions as $userPermission) {
             $wildcardpermission = new WildcardPermission($userPermission);
 
-            if ($wildcardpermission->implies($permission['name'])) {
+            if ($wildcardpermission->implies($permissionName)) {
                 return true;
             }
         }
