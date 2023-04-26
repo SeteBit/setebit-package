@@ -31,6 +31,14 @@ if (!function_exists('token')) {
     }
 }
 
+if (!function_exists('uniqueTicketCode')) {
+    function uniqueTicketCode(string $suffix): string
+    {
+        $code = strtoupper(substr(uniqid(), 1, 13));
+        return $code . $suffix;
+    }
+}
+
 if (!function_exists('hasPermission')) {
     function hasPermission(array $permission): bool
     {
