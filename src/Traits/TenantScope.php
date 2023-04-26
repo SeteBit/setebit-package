@@ -10,15 +10,11 @@ trait TenantScope
     protected static function booted(): void
     {
         static::creating(function (Model $model) {
-            if (tenant()) {
-                $model->tenant_id = tenant()->id;
-            }
+            $model->tenant_id = tenant()->id;
         });
 
         static::addGlobalScope('tenant', function (Builder $builder) {
-            if (tenant()) {
-                $builder->where('tenant_id', tenant()->id);
-            }
+            $builder->where('tenant_id', tenant()->id);
         });
     }
 }
