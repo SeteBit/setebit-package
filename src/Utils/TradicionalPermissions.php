@@ -11,9 +11,9 @@ class TradicionalPermissions
     const LIST_BIND = ['name' => 'tradicional.listar', 'roles' => [UserLevel::ADMIN->value]];
     const LIST_AUDIT = ['name' => 'tradicional.listar.auditoria', 'roles' => [UserLevel::ADMIN->value]];
     const LIST_EXTRACTION = ['name' => 'tradicional.listar.extracao', 'roles' => [UserLevel::MANAGER->value]];
-    const LIST_LOTTERY = ['name' => 'tradicional.listar.loteria', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const LIST_MODALITY = ['name' => 'tradicional.listar.modalidade', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const LIST_TICKET = ['name' => 'tradicional.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
+    const LIST_LOTTERY = ['name' => 'tradicional.listar.loteria', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
+    const LIST_MODALITY = ['name' => 'tradicional.listar.modalidade', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
+    const LIST_TICKET = ['name' => 'tradicional.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
     const UPDATE_BIND = ['name' => 'tradicional.atualizar', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_EXTRACTION = ['name' => 'tradicional.atualizar.extracao', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_LOTTERY = ['name' => 'tradicional.atualizar.loteria', 'roles' => [UserLevel::ADMIN->value]];
@@ -30,5 +30,5 @@ class TradicionalPermissions
     const STORE_RESULT = ['name' => 'tradicional.criar.resultado', 'roles' => [UserLevel::ADMIN->value]];
     const STORE_TICKET = ['name' => 'tradicional.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
     const SHOW_BIND = ['name' => 'tradicional.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_LOTTERY = ['name' => 'tradicional.mostrar.loteria', 'roles' => [UserLevel::MANAGER->value, UserLevel::MANAGER->value]];
+    const SHOW_LOTTERY = ['name' => 'tradicional.mostrar.loteria', 'roles' => [UserLevel::MANAGER->value, UserLevel::CUSTOMER->value]];
 }
