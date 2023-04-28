@@ -16,7 +16,7 @@ class TenantPermissions
     const LIST_TENANT = ['name' => 'auth.listar.tenant', 'roles' => [UserLevel::ADMIN->value]];
     const LIST_OPERATOR = ['name' => 'auth.listar.operador', 'roles' => [UserLevel::MANAGER->value]];
     const LIST_USERGROUP = ['name' => 'auth.listar.grupo_usuario', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_BIND = ['name' => 'auth.atualizar', 'roles' => [UserLevel::ADMIN]];
+    const UPDATE_BIND = ['name' => 'auth.atualizar', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_ADMIN = ['name' => 'auth.atualizar.admin', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_BALANCE = ['name' => 'auth.atualizar.balanco', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_CUSTOMER = ['name' => 'auth.atualizar.cliente', 'roles' => [UserLevel::ADMIN->value]];
