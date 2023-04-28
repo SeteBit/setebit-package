@@ -5,10 +5,10 @@ namespace Setebit\Package\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static object tenant()
- * @method static object user()
- * @method static object token()
- * @method static object permissions()
+ * @method static object|null tenant()
+ * @method static object|null user()
+ * @method static object|null token()
+ * @method static object|null permissions()
  */
 class AuthData extends Facade
 {

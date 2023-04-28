@@ -44,10 +44,10 @@ if (!function_exists('hasPermission')) {
     {
         $permissionName = $permission['name'];
 
-        foreach (AuthData::permissions()->permissions as $userPermission) {
-            $wildcardpermission = new WildcardPermission($userPermission);
+        foreach (AuthData::permissions() as $userPermission) {
+            $wildcardPermission = new WildcardPermission($userPermission);
 
-            if ($wildcardpermission->implies($permissionName)) {
+            if ($wildcardPermission->implies($permissionName)) {
                 return true;
             }
         }
