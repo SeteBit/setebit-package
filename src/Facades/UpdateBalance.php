@@ -7,7 +7,7 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static PromiseInterface|Response handle()
+ * @method static PromiseInterface|Response handle(int $userId, array $data)
  */
 class UpdateBalance extends Facade
 {
