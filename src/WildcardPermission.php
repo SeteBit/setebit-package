@@ -10,8 +10,8 @@ class WildcardPermission
     public const PART_DELIMITER = '.';
     public const SUBPART_DELIMITER = ',';
 
-    protected $permission;
-    protected $parts;
+    protected string $permission;
+    protected Collection $parts;
 
     public function __construct(string $permission)
     {

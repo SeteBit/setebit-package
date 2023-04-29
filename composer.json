@@ -18,6 +18,7 @@
     "require": {
         "php": "^8.2",
         "illuminate/support": "^9.0|^10.0",
+        "guzzlehttp/guzzle": "^7.2",
         "owen-it/laravel-auditing": "^13.0"
     },
     "require-dev": {
@@ -52,7 +53,8 @@
                 "Setebit\\Package\\SetebitPackageServiceProvider"
             ],
             "aliases": {
-                "AuthData": "Setebit\\Package\\Facades\\AuthData"
+                "AuthData": "Setebit\\Package\\Facades\\AuthData",
+                "UpdateBalance": "Setebit\\Package\\UpdateBalance"
             }
         }
     }
