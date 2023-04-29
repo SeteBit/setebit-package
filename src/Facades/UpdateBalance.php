@@ -2,13 +2,12 @@
 
 namespace Setebit\Package\Facades;
 
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static object|null tenant()
- * @method static object|null user()
- * @method static object|null token()
- * @method static array|null permissions()
+ * @method static PromiseInterface|Response handle()
  */
 class UpdateBalance extends Facade
 {
