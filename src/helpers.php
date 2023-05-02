@@ -18,7 +18,7 @@ if (!function_exists('user')) {
 }
 
 if (!function_exists('permissions')) {
-    function permissions(): object|null
+    function permissions(): array|null
     {
         return AuthData::permissions();
     }
