@@ -19,6 +19,7 @@ class TradicionalPermissions
     const UPDATE_LOTTERY = ['name' => 'tradicional.atualizar.loteria', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_QUOTAS_MODALITY = ['name' => 'tradicional.atualizar.modalidade.cotas', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_MODALITY = ['name' => 'tradicional.atualizar.modalidade', 'roles' => [UserLevel::ADMIN->value]];
+    const UPDATE_SETTINGS = ['name' => 'tradicional.atualizar.configuracoes', 'roles' => [UserLevel::ADMIN->value]];
     const DESTROY_BIND = ['name' => 'tradicional.apagar', 'roles' => [UserLevel::ADMIN->value]];
     const DESTROY_EXTRACTION = ['name' => 'tradicional.apagar.extracao', 'roles' => [UserLevel::ADMIN->value]];
     const DESTROY_LOTTERY = ['name' => 'tradicional.apagar.loteria', 'roles' => [UserLevel::ADMIN->value]];
@@ -31,4 +32,5 @@ class TradicionalPermissions
     const STORE_TICKET = ['name' => 'tradicional.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
     const SHOW_BIND = ['name' => 'tradicional.mostrar', 'roles' => [UserLevel::ADMIN->value]];
     const SHOW_LOTTERY = ['name' => 'tradicional.mostrar.loteria', 'roles' => [UserLevel::MANAGER->value, UserLevel::CUSTOMER->value]];
+    const SHOW_SETTINGS = ['name' => 'tradicional.mostrar.configuracoes', 'roles' => [UserLevel::ADMIN->value]];
 }
