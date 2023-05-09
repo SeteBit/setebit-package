@@ -25,7 +25,7 @@ if (!function_exists('permissions')) {
 }
 
 if (!function_exists('token')) {
-    function token(): object|null
+    function token(): string|null
     {
         return AuthData::token();
     }
