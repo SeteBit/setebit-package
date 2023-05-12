@@ -23,8 +23,8 @@ class BindTheHeader
                 $headers->put($headerName->value(), json_decode($headerValue));
             });
 
-        App::scoped(AuthData::class, function () use ($headers) {
-            return new AuthData($headers->toArray());
+        App::scoped(AuthData::class, function () use ($headers, $request) {
+            return new AuthData($headers->toArray(), $request);
         });
 
         return $next($request);
