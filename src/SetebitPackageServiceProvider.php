@@ -4,15 +4,12 @@ namespace Setebit\Package;
 
 use Illuminate\Support\ServiceProvider;
 use Setebit\Package\Http\Middleware\BindTheHeader;
-use Setebit\Package\Http\Middleware\CheckIfTenantHasModule;
 
 class SetebitPackageServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        app('router')
-            ->aliasMiddleware('auth-data', BindTheHeader::class)
-            ->aliasMiddleware('module', CheckIfTenantHasModule::class);
+        app('router')->aliasMiddleware('auth-data', BindTheHeader::class);
 
         $this->publishes([
             __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
