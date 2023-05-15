@@ -27,7 +27,7 @@ readonly final class AuthData
             return null;
         }
 
-        return $response->object()['tenant'];
+        return $response->object()?->tenant;
     }
 
     public function user(): object|null
