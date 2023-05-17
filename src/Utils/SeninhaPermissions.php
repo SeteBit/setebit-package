@@ -2,7 +2,6 @@
 
 namespace Setebit\Package\Utils;
 
-use http\Client\Curl\User;
 use Setebit\Package\Enums\UserLevel;
 
 class SeninhaPermissions
