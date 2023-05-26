@@ -20,6 +20,7 @@ class TenantPermissions
     const UPDATE_ADMIN = ['name' => 'auth.atualizar.admin', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_BALANCE = ['name' => 'auth.atualizar.balanco', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_CUSTOMER = ['name' => 'auth.atualizar.cliente', 'roles' => [UserLevel::ADMIN->value]];
+    const UPDATE_CUSTOMER_COMMISSION = ['name' => 'auth.atualizar.cliente.comissao', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_USER_PERMISSIONS = ['name' => 'auth.atualizar.permissoes', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_MANAGER = ['name' => 'auth.atualizar.gerente', 'roles' => [UserLevel::ADMIN->value]];
     const UPDATE_MANAGER_COMMISSION = ['name' => 'auth.atualizar.gerente.comissao', 'roles' => [UserLevel::ADMIN->value]];
@@ -37,6 +38,8 @@ class TenantPermissions
     const DESTROY_MANAGER = ['name' => 'auth.apagar.gerente', 'roles' => [UserLevel::ADMIN->value]];
     const DESTROY_OPERATOR = ['name' => 'auth.apagar.operador', 'roles' => [UserLevel::MANAGER->value]];
     const DESTROY_TENANT_LOGO = ['name' => 'auth.apagar.tenant.logo', 'roles' => [UserLevel::ADMIN->value]];
+    const SHOW_BIND = ['nane' => 'auth.mostrar', 'roles' => [UserLevel::ADMIN->value]];
+    const SHOW_CUSTOMER_COMMISSION = ['name' => 'auth.mostrar.cliente.comissao', 'roles' => [UserLevel::ADMIN->value, UserLevel::CUSTOMER->value]];
     const STORE_BIND = ['name' => 'auth.criar', 'roles' => [UserLevel::ADMIN->value]];
     const STORE_ADMIN = ['name' => 'auth.criar.admin', 'roles' => [UserLevel::ADMIN->value]];
     const STORE_CUSTOMER = ['name' => 'auth.criar.cliente', 'roles' => [UserLevel::ADMIN->value]];
