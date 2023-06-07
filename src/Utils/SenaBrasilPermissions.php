@@ -6,23 +6,80 @@ use Setebit\Package\Enums\UserLevel;
 
 class SenaBrasilPermissions
 {
-    public static string $bind = 'senabrasil';
+    const ADMIN = UserLevel::ADMIN->value;
+    const MANAGER = UserLevel::MANAGER->value;
+    const OPERATOR = UserLevel::OPERATOR->value;
+    const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    const LIST_BIND = ['name' => 'senabrasil.listar', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_AUDIT = ['name' => 'senabrasil.listar.auditoria', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_CONCOURSE = ['name' => 'senabrasil.listar.concurso', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const LIST_RESULT = ['name' => 'senabrasil.listar.resultado', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_QUOTATION = ['name' => 'senabrasil.listar.cotacao', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const LIST_TICKET = ['name' => 'senabrasil.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_BIND = ['name' => 'senabrasil.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_CONCOURSE = ['name' => 'senabrasil.mostrar.concurso', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const SHOW_TICKET = ['name' => 'senabrasil.mostrar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const STORE_BIND = ['name' => 'senabrasil.criar', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_RESULT = ['name' => 'senabrasil.criar.resultado', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_TICKET = ['name' => 'senabrasil.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const UPDATE_BIND = ['name' => 'senabrasil.atualizar', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_CONCOURSE = ['name' => 'senabrasil.atualizar.concurso', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_QUOTATION = ['name' => 'senabrasil.atualizar.cotacao', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_BIND = ['name' => 'senabrasil.apagar', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_TICKET = ['name' => 'senabrasil.apagar.bilhete', 'roles' => [UserLevel::ADMIN->value]];
+    public static string $bind = 'senaBrasil';
+
+    /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'senaBrasil.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_AUDIT = [
+        'name' => 'senaBrasil.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_CONCOURSE = [
+        'name' => 'senaBrasil.listar.concurso',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const LIST_TICKET = [
+        'name' => 'senaBrasil.listar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Store
+     */
+
+    const STORE_BIND = [
+        'name' => 'senaBrasil.criar',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RESULT = [
+        'name' => 'senaBrasil.criar.resultado',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BIND = [
+        'name' => 'senaBrasil.atualizar',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_CONCOURSE = [
+        'name' => 'senaBrasil.atualizar.concurso',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_QUOTATION = [
+        'name' => 'senaBrasil.atualizar.cotacao',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Validate
+     */
+
+    const VALIDATE_TICKET = [
+        'name' => 'senaBrasil.validar.bilhete',
+        'roles' => [self::OPERATOR]
+    ];
+
+
+    /**
+     * Cancel
+     */
+
+    const CANCEL_TICKET = [
+        'name' => 'senaBrasil.cancelar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
 }

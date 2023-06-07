@@ -6,31 +6,93 @@ use Setebit\Package\Enums\UserLevel;
 
 class DoisQuinhentosPermissions
 {
-    public static string $bind = 'doisquinhentos';
+    const ADMIN = UserLevel::ADMIN->value;
+    const MANAGER = UserLevel::MANAGER->value;
+    const OPERATOR = UserLevel::OPERATOR->value;
+    const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    const LIST_BIND = ['name' => 'doisquinhentos.listar', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_AUDIT = ['name' => 'doisquinhentos.listar.auditoria', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_DEDUCTION = ['name' => 'doisquinhentos.listar.desconto', 'roles' => [UserLevel::MANAGER->value]];
-    const LIST_RESULT = ['name' => 'doisquinhentos.listar.resultado', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_TICKET = ['name' => 'doisquinhentos.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_TWOFIVEHUNDRED = ['name' => 'doisquinhentos.listar.doisquinhentos', 'roles' => [UserLevel::MANAGER->value, UserLevel::CUSTOMER->value]];
-    const SHOW_BIND = ['name' => 'doisquinhentos.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_DEDUCTION = ['name' => 'doisquinhentos.mostrar.desconto', 'roles' => [UserLevel::MANAGER->value]];
-    const SHOW_RESULT = ['name' => 'doisquinhentos.mostrar.resultado', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_TICKET = ['name' => 'doisquinhentos.mostrar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_TWOFIVEHUNDRED = ['name' => 'doisquinhentos.mostrar.doisquinhentos', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const STORE_BIND = ['name' => 'doisquinhentos.criar', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_DEDUCTION = ['name' => 'doisquinhentos.criar.desconto', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_RESULT = ['name' => 'doisquinhentos.criar.resultado', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_TICKET = ['name' => 'doisquinhentos.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const STORE_TWOFIVEHUNDRED = ['name' => 'doisquinhentos.criar.doisquinhentos', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_BIND = ['name' => 'doisquinhentos.atualizar', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_GUESS = ['name' => 'doisquinhentos.atualizar.palpite', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_DEDUCTION = ['name' => 'doisquinhentos.atualizar.desconto', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_TICKET = ['name' => 'doisquinhentos.atualizar.bilhete', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_TWOFIVEHUNDRED = ['name' => 'doisquinhentos.atualizar.doisquinhentos', 'roles' => [UserLevel::MANAGER->value]];
-    const DESTROY_BIND = ['name' => 'doisquinhentos.apagar', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_TICKET = ['name' => 'doisquinhentos.apagar.bilhete', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_DEDUCTION = ['name' => 'doisquinhentos.apagar.desconto', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_TWOFIVEHUNDRED = ['name' => 'doisquinhentos.apagar.doisquinhentos', 'roles' => [UserLevel::ADMIN->value]];
+    public static string $bind = 'doisQuinhentos';
+
+    /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'doisQuinhentos.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_AUDIT = [
+        'name' => 'doisQuinhentos.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TICKET = [
+        'name' => 'doisQuinhentos.listar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const LIST_TWOFIVEHUNDRED = [
+        'name' => 'doisQuinhentos.listar.doisQuinhentos',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Store
+     */
+
+    const STORE_BIND = [
+        'name' => 'doisQuinhentos.criar',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RESULT = [
+        'name' => 'doisQuinhentos.criar.resultado',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_TWOFIVEHUNDRED = [
+        'name' => 'doisQuinhentos.criar.doisQuinhentos',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BIND = [
+        'name' => 'doisQuinhentos.atualizar',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TWOFIVEHUNDRED = [
+        'name' => 'doisQuinhentos.atualizar.doisQuinhentos',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Validate
+     */
+
+    const VALIDATE_TICKET = [
+        'name' => 'doisQuinhentos.validar.bilhete',
+        'roles' => [self::OPERATOR]
+    ];
+
+
+    /**
+     * Cancel
+     */
+
+    const CANCEL_TICKET = [
+        'name' => 'doisQuinhentos.cancelar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Destroy
+     */
+
+    const DESTROY_BIND = [
+        'name' => 'doisQuinhentos.apagar',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_TWOFIVEHUNDRED = [
+        'name' => 'doisQuinhentos.apagar.doisQuinhentos',
+        'roles' => [self::ADMIN]
+    ];
 }
