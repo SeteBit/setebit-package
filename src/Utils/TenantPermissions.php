@@ -53,6 +53,10 @@ class TenantPermissions
         'name' => 'banca.listar.gerente.comissão',
         'roles' => [self::ADMIN]
     ];
+    const LIST_CUSTOMER_COMMISSION = [
+        'name' => 'banca.listar.cliente.comissão',
+        'roles' => [self::ADMIN]
+    ];
     const LIST_OPERATOR_COMMISSION = [
         'name' => 'banca.listar.cambista.comissão',
         'roles' => [self::ADMIN, self::MANAGER]
@@ -120,6 +124,10 @@ class TenantPermissions
     ];
     const UPDATE_MANAGER_COMMISSION = [
         'name' => 'banca.atualizar.gerente.comissão',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_CUSTOMER_COMMISSION = [
+        'name' => 'banca.atualizar.cliente.comissão',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_OPERATOR = [
