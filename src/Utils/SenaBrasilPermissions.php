@@ -11,26 +11,26 @@ class SenaBrasilPermissions
     const OPERATOR = UserLevel::OPERATOR->value;
     const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    public static string $bind = 'senaBrasil';
+    public static string $bind = 'sena_brasil';
 
     /**
      * List
      */
 
     const LIST_BIND = [
-        'name' => 'senaBrasil.listar',
+        'name' => 'sena_brasil.listar',
         'roles' => [self::ADMIN]
     ];
     const LIST_AUDIT = [
-        'name' => 'senaBrasil.listar.auditoria',
+        'name' => 'sena_brasil.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
     const LIST_CONCOURSE = [
-        'name' => 'senaBrasil.listar.concurso',
+        'name' => 'sena_brasil.listar.concurso',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_TICKET = [
-        'name' => 'senaBrasil.listar.bilhete',
+        'name' => 'sena_brasil.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -39,11 +39,11 @@ class SenaBrasilPermissions
      */
 
     const STORE_BIND = [
-        'name' => 'senaBrasil.criar',
+        'name' => 'sena_brasil.criar',
         'roles' => [self::ADMIN]
     ];
     const STORE_RESULT = [
-        'name' => 'senaBrasil.criar.resultado',
+        'name' => 'sena_brasil.criar.resultado',
         'roles' => [self::ADMIN]
     ];
 
@@ -52,15 +52,15 @@ class SenaBrasilPermissions
      */
 
     const UPDATE_BIND = [
-        'name' => 'senaBrasil.atualizar',
+        'name' => 'sena_brasil.atualizar',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_CONCOURSE = [
-        'name' => 'senaBrasil.atualizar.concurso',
+        'name' => 'sena_brasil.atualizar.concurso',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_QUOTATION = [
-        'name' => 'senaBrasil.atualizar.cotacao',
+        'name' => 'sena_brasil.atualizar.cotação',
         'roles' => [self::ADMIN]
     ];
 
@@ -69,7 +69,7 @@ class SenaBrasilPermissions
      */
 
     const VALIDATE_TICKET = [
-        'name' => 'senaBrasil.validar.bilhete',
+        'name' => 'sena_brasil.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
 
@@ -79,7 +79,7 @@ class SenaBrasilPermissions
      */
 
     const CANCEL_TICKET = [
-        'name' => 'senaBrasil.cancelar.bilhete',
+        'name' => 'sena_brasil.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 }

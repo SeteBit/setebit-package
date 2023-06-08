@@ -11,82 +11,82 @@ class TenantPermissions
     const OPERATOR = UserLevel::OPERATOR->value;
     const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    public static string $bind = 'auth';
+    public static string $bind = 'banca';
 
     /**
      * List
      */
 
     const LIST_BIND = [
-        'name' => 'auth.listar',
+        'name' => 'banca.listar',
         'roles' => [self::ADMIN]
     ];
     const LIST_ADMIN = [
-        'name' => 'auth.listar.admin',
+        'name' => 'banca.listar.admin',
         'roles' => [self::ADMIN]
     ];
     const LIST_CUSTOMER = [
-        'name' => 'auth.listar.cliente',
+        'name' => 'banca.listar.cliente',
         'roles' => [self::ADMIN]
     ];
     const LIST_MANAGER = [
-        'name' => 'auth.listar.gerente',
+        'name' => 'banca.listar.gerente',
         'roles' => [self::ADMIN]
     ];
     const LIST_AUDIT = [
-        'name' => 'auth.listar.auditoria',
+        'name' => 'banca.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
     const LIST_USER_PERMISSIONS = [
-        'name' => 'auth.listar.permissoes',
+        'name' => 'banca.listar.permissões',
         'roles' => [self::ADMIN]
     ];
     const LIST_OPERATOR = [
-        'name' => 'auth.listar.operador',
+        'name' => 'banca.listar.cambista',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const LIST_USER_GROUP = [
-        'name' => 'auth.listar.grupo',
+        'name' => 'banca.listar.grupo',
         'roles' => [self::ADMIN]
     ];
     const LIST_MANAGER_COMMISSION = [
-        'name' => 'auth.listar.gerente.comissao',
+        'name' => 'banca.listar.gerente.comissão',
         'roles' => [self::ADMIN]
     ];
     const LIST_OPERATOR_COMMISSION = [
-        'name' => 'auth.listar.operador.comissao',
+        'name' => 'banca.listar.cambista.comissão',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const LIST_OPERATOR_SETTINGS = [
-        'name' => 'auth.listar.operador.configuracoes',
+        'name' => 'banca.listar.cambista.configuração',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
-    const LIST_TENANT_COLORS = [
-        'name' => 'auth.listar.tenant.cores',
+    const LIST_TENANT_COLOR = [
+        'name' => 'banca.listar.banca.cores',
         'roles' => [self::ADMIN]
     ];
     const LIST_TENANT_MODULES = [
-        'name' => 'auth.listar.tenant.modulos',
+        'name' => 'banca.listar.banca.módulos',
         'roles' => [self::ADMIN]
     ];
     const LIST_TENANT_SETTINGS = [
-        'name' => 'auth.listar.tenant.configuracoes',
+        'name' => 'banca.listar.banca.configuração',
         'roles' => [self::ADMIN]
     ];
     const LIST_TENANT_REGULATION = [
-        'name' => 'auth.listar.tenant.regulamento',
+        'name' => 'banca.listar.banca.regulamento',
         'roles' => [self::ADMIN]
     ];
     const LIST_TENANT_LOGO = [
-        'name' => 'auth.listar.tenant.logo',
+        'name' => 'banca.listar.banca.logo',
         'roles' => [self::ADMIN]
     ];
     const LIST_TENANT_PREFERENCES = [
-        'name' => 'auth.listar.tenant.preferencias',
+        'name' => 'banca.listar.banca.preferências',
         'roles' => [self::ADMIN]
     ];
     const LIST_TENANT_PAYMENT_INTEGRATION = [
-        'name' => 'auth.listar.tenant.integracao',
+        'name' => 'banca.listar.banca.integração',
         'roles' => [self::ADMIN]
     ];
 
@@ -95,75 +95,75 @@ class TenantPermissions
      */
 
     const UPDATE_BIND = [
-        'name' => 'auth.atualizar',
+        'name' => 'banca.atualizar',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_ADMIN = [
-        'name' => 'auth.atualizar.admin',
+        'name' => 'banca.atualizar.admin',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_BALANCE = [
-        'name' => 'auth.atualizar.balanco',
+        'name' => 'banca.atualizar.saldo',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const UPDATE_CUSTOMER = [
-        'name' => 'auth.atualizar.cliente',
+        'name' => 'banca.atualizar.cliente',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_USER_PERMISSIONS = [
-        'name' => 'auth.atualizar.permissoes',
+        'name' => 'banca.atualizar.permissões',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_MANAGER = [
-        'name' => 'auth.atualizar.gerente',
+        'name' => 'banca.atualizar.gerente',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_MANAGER_COMMISSION = [
-        'name' => 'auth.atualizar.gerente.comissao',
+        'name' => 'banca.atualizar.gerente.comissão',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_OPERATOR = [
-        'name' => 'auth.atualizar.operador',
+        'name' => 'banca.atualizar.cambista',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const UPDATE_OPERATOR_COMMISSION = [
-        'name' => 'auth.atualizar.operador.comissao',
+        'name' => 'banca.atualizar.cambista.comissão',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const UPDATE_OPERATOR_SETTINGS = [
-        'name' => 'auth.atualizar.operador.configuracoes',
+        'name' => 'banca.atualizar.cambista.configuração',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const UPDATE_TENANT_MODULES = [
-        'name' => 'auth.atualizar.tenant.modulos',
+        'name' => 'banca.atualizar.banca.módulos',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_REGULATION = [
-        'name' => 'auth.atualizar.tenant.regulamento',
+        'name' => 'banca.atualizar.banca.regulamento',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_SETTINGS = [
-        'name' => 'auth.atualizar.tenant.configuracoes',
+        'name' => 'banca.atualizar.banca.configuração',
         'roles' => [self::ADMIN]
     ];
-    const UPDATE_TENANT_COLORS = [
-        'name' => 'auth.atualizar.tenant.cores',
+    const UPDATE_TENANT_COLOR = [
+        'name' => 'banca.atualizar.banca.cores',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_PREFERENCES = [
-        'name' => 'auth.atualizar.tenant.preferencias',
+        'name' => 'banca.atualizar.banca.preferências',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_LOGO = [
-        'name' => 'auth.atualizar.tenant.logo',
+        'name' => 'banca.atualizar.banca.logo',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_PAYMENT_INTEGRATION = [
-        'name' => 'auth.atualizar.tenant.integracao',
+        'name' => 'banca.atualizar.banca.integração',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_USER_GROUP = [
-        'name' => 'auth.atualizar.grupo',
+        'name' => 'banca.atualizar.grupo',
         'roles' => [self::ADMIN]
     ];
 
@@ -172,31 +172,31 @@ class TenantPermissions
      */
 
     const DESTROY_BIND = [
-        'name' => 'auth.apagar',
+        'name' => 'banca.apagar',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_ADMIN = [
-        'name' => 'auth.apagar.admin',
+        'name' => 'banca.apagar.admin',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_CUSTOMER = [
-        'name' => 'auth.apagar.cliente',
+        'name' => 'banca.apagar.cliente',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_MANAGER = [
-        'name' => 'auth.apagar.gerente',
+        'name' => 'banca.apagar.gerente',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_OPERATOR = [
-        'name' => 'auth.apagar.operador',
+        'name' => 'banca.apagar.cambista',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_TENANT_LOGO = [
-        'name' => 'auth.apagar.tenant.logo',
+        'name' => 'banca.apagar.banca.logo',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_USER_GROUP = [
-        'name' => 'auth.apagar.grupo',
+        'name' => 'banca.apagar.grupo',
         'roles' => [self::ADMIN]
     ];
 
@@ -205,31 +205,31 @@ class TenantPermissions
      */
 
     const STORE_BIND = [
-        'name' => 'auth.criar',
+        'name' => 'banca.criar',
         'roles' => [self::ADMIN]
     ];
     const STORE_ADMIN = [
-        'name' => 'auth.criar.admin',
+        'name' => 'banca.criar.admin',
         'roles' => [self::ADMIN]
     ];
     const STORE_MANAGER = [
-        'name' => 'auth.criar.gerente',
+        'name' => 'banca.criar.gerente',
         'roles' => [self::ADMIN]
     ];
     const STORE_OPERATOR = [
-        'name' => 'auth.criar.operador',
+        'name' => 'banca.criar.cambista',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const STORE_INVOICE = [
-        'name' => 'auth.criar.fatura',
+        'name' => 'banca.criar.fatura',
         'roles' => [self::OPERATOR, self::MANAGER]
     ];
     const STORE_WITHDRAWS = [
-        'name' => 'auth.criar.saque',
+        'name' => 'banca.criar.saque',
         'roles' => [self::MANAGER]
     ];
     const STORE_USER_GROUP = [
-        'name' => 'auth.criar.grupo',
+        'name' => 'banca.criar.grupo',
         'roles' => [self::ADMIN]
     ];
 }

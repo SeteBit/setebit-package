@@ -11,26 +11,26 @@ class DoisQuinhentosPermissions
     const OPERATOR = UserLevel::OPERATOR->value;
     const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    public static string $bind = 'doisQuinhentos';
+    public static string $bind = '2_pra_500';
 
     /**
      * List
      */
 
     const LIST_BIND = [
-        'name' => 'doisQuinhentos.listar',
+        'name' => '2_pra_500.listar',
         'roles' => [self::ADMIN]
     ];
     const LIST_AUDIT = [
-        'name' => 'doisQuinhentos.listar.auditoria',
+        'name' => '2_pra_500.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
     const LIST_TICKET = [
-        'name' => 'doisQuinhentos.listar.bilhete',
+        'name' => '2_pra_500.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_TWOFIVEHUNDRED = [
-        'name' => 'doisQuinhentos.listar.doisQuinhentos',
+        'name' => '2_pra_500.listar.2_pra_500',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -39,15 +39,15 @@ class DoisQuinhentosPermissions
      */
 
     const STORE_BIND = [
-        'name' => 'doisQuinhentos.criar',
+        'name' => '2_pra_500.criar',
         'roles' => [self::ADMIN]
     ];
     const STORE_RESULT = [
-        'name' => 'doisQuinhentos.criar.resultado',
+        'name' => '2_pra_500.criar.resultado',
         'roles' => [self::ADMIN]
     ];
     const STORE_TWOFIVEHUNDRED = [
-        'name' => 'doisQuinhentos.criar.doisQuinhentos',
+        'name' => '2_pra_500.criar.2_pra_500',
         'roles' => [self::ADMIN]
     ];
 
@@ -56,11 +56,11 @@ class DoisQuinhentosPermissions
      */
 
     const UPDATE_BIND = [
-        'name' => 'doisQuinhentos.atualizar',
+        'name' => '2_pra_500.atualizar',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TWOFIVEHUNDRED = [
-        'name' => 'doisQuinhentos.atualizar.doisQuinhentos',
+        'name' => '2_pra_500.atualizar.2_pra_500',
         'roles' => [self::ADMIN]
     ];
 
@@ -69,7 +69,7 @@ class DoisQuinhentosPermissions
      */
 
     const VALIDATE_TICKET = [
-        'name' => 'doisQuinhentos.validar.bilhete',
+        'name' => '2_pra_500.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
 
@@ -79,7 +79,7 @@ class DoisQuinhentosPermissions
      */
 
     const CANCEL_TICKET = [
-        'name' => 'doisQuinhentos.cancelar.bilhete',
+        'name' => '2_pra_500.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -88,11 +88,11 @@ class DoisQuinhentosPermissions
      */
 
     const DESTROY_BIND = [
-        'name' => 'doisQuinhentos.apagar',
+        'name' => '2_pra_500.apagar',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_TWOFIVEHUNDRED = [
-        'name' => 'doisQuinhentos.apagar.doisQuinhentos',
+        'name' => '2_pra_500.apagar.2_pra_500',
         'roles' => [self::ADMIN]
     ];
 }

@@ -11,26 +11,26 @@ class BolaoPermissions
     const OPERATOR = UserLevel::OPERATOR->value;
     const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    public static string $bind = 'bolao';
+    public static string $bind = 'bolão';
 
     /**
      * List
      */
 
     const LIST_BIND = [
-        'name' => 'bolao.listar',
+        'name' => 'bolão.listar',
         'roles' => [self::ADMIN]
     ];
     const LIST_AUDIT = [
-        'name' => 'bolao.listar.auditoria',
+        'name' => 'bolão.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
     const LIST_BOLLON = [
-        'name' => 'bolao.listar.bolao',
+        'name' => 'bolão.listar.bolão',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_TICKET = [
-        'name' => 'bolao.listar.bilhete',
+        'name' => 'bolão.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -39,15 +39,15 @@ class BolaoPermissions
      */
 
     const STORE_BIND = [
-        'name' => 'bolao.criar',
+        'name' => 'bolão.criar',
         'roles' => [self::ADMIN]
     ];
     const STORE_BOLLON = [
-        'name' => 'bolao.criar.bolao',
+        'name' => 'bolão.criar.bolão',
         'roles' => [self::ADMIN]
     ];
     const STORE_RESULT = [
-        'name' => 'bolao.criar.resultado',
+        'name' => 'bolão.criar.resultado',
         'roles' => [self::ADMIN]
     ];
 
@@ -56,11 +56,11 @@ class BolaoPermissions
      */
 
     const UPDATE_BIND = [
-        'name' => 'bolao.atualizar',
+        'name' => 'bolão.atualizar',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_BOLLON = [
-        'name' => 'bolao.atualizar.bolao',
+        'name' => 'bolão.atualizar.bolão',
         'roles' => [self::ADMIN]
     ];
 
@@ -69,7 +69,7 @@ class BolaoPermissions
      */
 
     const VALIDATE_TICKET = [
-        'name' => 'bolao.validar.bilhete',
+        'name' => 'bolão.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
 
@@ -79,7 +79,7 @@ class BolaoPermissions
      */
 
     const CANCEL_TICKET = [
-        'name' => 'bolao.cancelar.bilhete',
+        'name' => 'bolão.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -88,11 +88,11 @@ class BolaoPermissions
      */
 
     const DESTROY_BIND = [
-        'name' => 'bolao.apagar',
+        'name' => 'bolão.apagar',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_BOLLON = [
-        'name' => 'bolao.apagar.bolao',
+        'name' => 'bolão.apagar.bolão',
         'roles' => [self::ADMIN]
     ];
 }

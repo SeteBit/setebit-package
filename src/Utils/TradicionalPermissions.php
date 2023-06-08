@@ -26,7 +26,7 @@ class TradicionalPermissions
         'roles' => [self::ADMIN]
     ];
     const LIST_EXTRACTION = [
-        'name' => 'tradicional.listar.extracao',
+        'name' => 'tradicional.listar.extração',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const LIST_LOTTERY = [
@@ -38,15 +38,15 @@ class TradicionalPermissions
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_QUOTATION = [
-        'name' => 'tradicional.listar.cotacao',
+        'name' => 'tradicional.listar.cotação',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
     const LIST_SETTINGS = [
-        'name' => 'tradicional.listar.configuracoes',
+        'name' => 'tradicional.listar.configuração',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const LIST_INSTANT_LOTTERY_FINANCIAL = [
-        'name' => 'tradicional.listar.instantanea_caixa',
+        'name' => 'tradicional.listar.caixa_loteria_instantânea',
         'roles' => [self::ADMIN]
     ];
 
@@ -59,7 +59,7 @@ class TradicionalPermissions
         'roles' => [self::ADMIN]
     ];
     const UPDATE_EXTRACTION = [
-        'name' => 'tradicional.atualizar.extracao',
+        'name' => 'tradicional.atualizar.extração',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_LOTTERY = [
@@ -71,15 +71,15 @@ class TradicionalPermissions
         'roles' => [self::ADMIN]
     ];
     const UPDATE_SETTINGS = [
-        'name' => 'tradicional.atualizar.configuracoes',
+        'name' => 'tradicional.atualizar.configuração',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_QUOTATION = [
-        'name' => 'tradicional.atualizar.cotacao',
+        'name' => 'tradicional.atualizar.cotação',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_INSTANT_LOTTERY_FINANCIAL = [
-        'name' => 'tradicional.atualizar.instantanea_caixa',
+        'name' => 'tradicional.atualizar.caixa_loteria_instantânea',
         'roles' => [self::ADMIN]
     ];
 
@@ -92,7 +92,7 @@ class TradicionalPermissions
         'roles' => [self::ADMIN]
     ];
     const DESTROY_EXTRACTION = [
-        'name' => 'tradicional.apagar.extracao',
+        'name' => 'tradicional.apagar.extração',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_LOTTERY = [
@@ -109,7 +109,7 @@ class TradicionalPermissions
         'roles' => [self::ADMIN]
     ];
     const STORE_EXTRACTION = [
-        'name' => 'tradicional.criar.extracao',
+        'name' => 'tradicional.criar.extração',
         'roles' => [self::ADMIN]
     ];
     const STORE_LOTTERY = [

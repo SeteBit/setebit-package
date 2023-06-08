@@ -11,26 +11,26 @@ class BolaoDezenaPermissions
     const OPERATOR = UserLevel::OPERATOR->value;
     const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    public static string $bind = 'bolaoDezena';
+    public static string $bind = 'bolão_de_dezenas';
 
     /**
      * List
      */
 
     const LIST_BIND = [
-        'name' => 'bolaoDezena.listar',
+        'name' => 'bolão_de_dezenas.listar',
         'roles' => [self::ADMIN]
     ];
     const LIST_AUDIT = [
-        'name' => 'bolaoDezena.listar.auditoria',
+        'name' => 'bolão_de_dezenas.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
     const LIST_BOLLON = [
-        'name' => 'bolaoDezena.listar.bolao',
+        'name' => 'bolão_de_dezenas.listar.bolão_de_dezenas',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_TICKET = [
-        'name' => 'bolaoDezena.listar.bilhete',
+        'name' => 'bolão_de_dezenas.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -39,15 +39,15 @@ class BolaoDezenaPermissions
      */
 
     const STORE_BIND = [
-        'name' => 'bolaoDezena.criar',
+        'name' => 'bolão_de_dezenas.criar',
         'roles' => [self::ADMIN]
     ];
     const STORE_BOLLON = [
-        'name' => 'bolaoDezena.criar.bolao',
+        'name' => 'bolão_de_dezenas.criar.bolão_de_dezenas',
         'roles' => [self::ADMIN]
     ];
     const STORE_RESULT = [
-        'name' => 'bolaoDezena.criar.resultado',
+        'name' => 'bolão_de_dezenas.criar.resultado',
         'roles' => [self::ADMIN]
     ];
 
@@ -56,7 +56,7 @@ class BolaoDezenaPermissions
      */
 
     const VALIDATE_TICKET = [
-        'name' => 'bolaoDezena.validar.bilhete',
+        'name' => 'bolão_de_dezenas.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
 
@@ -66,7 +66,7 @@ class BolaoDezenaPermissions
      */
 
     const CANCEL_TICKET = [
-        'name' => 'bolaoDezena.cancelar.bilhete',
+        'name' => 'bolão_de_dezenas.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
@@ -75,11 +75,11 @@ class BolaoDezenaPermissions
      */
 
     const DESTROY_BIND = [
-        'name' => 'bolaoDezena.apagar',
+        'name' => 'bolão_de_dezenas.apagar',
         'roles' => [self::ADMIN]
     ];
     const DESTROY_BOLLON = [
-        'name' => 'bolaoDezena.apagar.bolao',
+        'name' => 'bolão_de_dezenas.apagar.bolão_de_dezenas',
         'roles' => [self::ADMIN]
     ];
 }

@@ -23,7 +23,7 @@ class SorteioPermissions
         'roles' => [self::ADMIN]
     ];
     const LIST_AWARD = [
-        'name' => 'sorteio.listar.premio',
+        'name' => 'sorteio.listar.prêmio',
         'roles' => [self::ADMIN]
     ];
 
@@ -40,7 +40,7 @@ class SorteioPermissions
         'roles' => [self::ADMIN]
     ];
     const STORE_AWARD = [
-        'name' => 'sorteio.criar.premio',
+        'name' => 'sorteio.criar.prêmio',
         'roles' => [self::ADMIN]
     ];
 
@@ -57,7 +57,7 @@ class SorteioPermissions
         'roles' => [self::ADMIN]
     ];
     const UPDATE_AWARD = [
-        'name' => 'sorteio.atualizar.premio',
+        'name' => 'sorteio.atualizar.prêmio',
         'roles' => [self::ADMIN]
     ];
 
@@ -74,7 +74,7 @@ class SorteioPermissions
         'roles' => [self::ADMIN]
     ];
     const DESTROY_AWARD = [
-        'name' => 'sorteio.apagar.premio',
+        'name' => 'sorteio.apagar.prêmio',
         'roles' => [self::ADMIN]
     ];
 }
