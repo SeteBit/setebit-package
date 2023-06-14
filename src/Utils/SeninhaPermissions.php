@@ -6,23 +6,80 @@ use Setebit\Package\Enums\UserLevel;
 
 class SeninhaPermissions
 {
+
+    const ADMIN = UserLevel::ADMIN->value;
+    const MANAGER = UserLevel::MANAGER->value;
+    const OPERATOR = UserLevel::OPERATOR->value;
+    const CUSTOMER = UserLevel::CUSTOMER->value;
+
     public static string $bind = 'seninha';
 
-    const LIST_BIND = ['name' => 'seninha.listar', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_AUDIT = ['name' => 'seninha.listar.auditoria', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_CONCOURSE = ['name' => 'seninha.listar.concurso', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const LIST_RESULT = ['name' => 'seninha.listar.resultado', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_TICKET = ['name' => 'seninha.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const STORE_BIND = ['name' => 'seninha.criar', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_RESULT = ['name' => 'seninha.criar.resultado', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_TICKET = ['name' => 'seninha.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_BIND = ['name' => 'seninha.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_CONCOURSE = ['name' => 'seninha.mostrar.concurso', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const SHOW_MODALITY = ['name' => 'seninha.mostrar.modalidade', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_TICKET = ['name' => 'seninha.mostrar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const UPDATE_BIND = ['name' => 'seninha.atualizar', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_CONCOURSE = ['name' => 'seninha.atualizar.concurso', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_MODALITY = ['name' => 'seninha.atualizar.modalidade', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_BIND = ['name' => 'seninha.apagar', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_TICKET = ['name' => 'seninha.apagar.bilhete', 'roles' => [UserLevel::ADMIN->value]];
+    /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'seninha.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_AUDIT = [
+        'name' => 'seninha.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TICKET = [
+        'name' => 'seninha.listar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const LIST_CONCOURSE = [
+        'name' => 'seninha.listar.concurso',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Store
+     */
+
+    const STORE_BIND = [
+        'name' => 'seninha.criar',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RESULT = [
+        'name' => 'seninha.criar.resultado',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BIND = [
+        'name' => 'seninha.atualizar',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_CONCOURSE = [
+        'name' => 'seninha.atualizar.concurso',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_MODALITY = [
+        'name' => 'seninha.atualizar.modalidade',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Validate
+     */
+
+    const VALIDATE_TICKET = [
+        'name' => 'seninha.validar.bilhete',
+        'roles' => [self::OPERATOR]
+    ];
+
+    /**
+     * Cancel
+     */
+
+    const CANCEL_TICKET = [
+        'name' => 'seninha.cancelar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
 }

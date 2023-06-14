@@ -6,46 +6,238 @@ use Setebit\Package\Enums\UserLevel;
 
 class TenantPermissions
 {
-    public static string $bind = 'auth';
+    const ADMIN = UserLevel::ADMIN->value;
+    const MANAGER = UserLevel::MANAGER->value;
+    const OPERATOR = UserLevel::OPERATOR->value;
+    const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    const LIST_BIND = ['name' => 'auth.listar', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_ADMIN = ['name' => 'auth.listar.admin', 'roles' => [UserLevel::MANAGER->value]];
-    const LIST_CUSTOMER = ['name' => 'auth.listar.cliente', 'roles' => [UserLevel::MANAGER->value]];
-    const LIST_MANAGER = ['name' => 'auth.listar.gerente', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_MODULE = ['name' => 'auth.listar.modulo', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_TENANT = ['name' => 'auth.listar.tenant', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_OPERATOR = ['name' => 'auth.listar.operador', 'roles' => [UserLevel::MANAGER->value]];
-    const LIST_USERGROUP = ['name' => 'auth.listar.grupo_usuario', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_BIND = ['name' => 'auth.atualizar', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_ADMIN = ['name' => 'auth.atualizar.admin', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_BALANCE = ['name' => 'auth.atualizar.balanco', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_CUSTOMER = ['name' => 'auth.atualizar.cliente', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_CUSTOMER_COMMISSION = ['name' => 'auth.atualizar.cliente.comissao', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_USER_PERMISSIONS = ['name' => 'auth.atualizar.permissoes', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_MANAGER = ['name' => 'auth.atualizar.gerente', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_MANAGER_COMMISSION = ['name' => 'auth.atualizar.gerente.comissao', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_OPERATOR = ['name' => 'auth.atualizar.operador', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_OPERATOR_COMMISSION = ['name' => 'auth.atualizar.operador.comissao', 'roles' => [UserLevel::MANAGER->value]];
-    const UPDATE_OPERATOR_SETTINGS = ['name' => 'auth.atualizar.operador.configuracoes', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value]];
-    const UPDATE_TENANT = ['name' => 'auth.atualizar.tenant', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_TENANT_MODULES = ['name' => 'auth.atualizar.tenant.modulos', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_TENANT_REGULATION = ['name' => 'auth.atualizar.tenant.regulamento', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_TENANT_SETTINGS = ['name' => 'auth.atualizar.tenant.configuracoes', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_USERGROUP = ['name' => 'auth.atualizar.grupo_usuario', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_BIND = ['name' => 'auth.apagar', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_ADMIN = ['name' => 'auth.apagar.admin', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_CUSTOMER = ['name' => 'auth.apagar.cliente', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_MANAGER = ['name' => 'auth.apagar.gerente', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_OPERATOR = ['name' => 'auth.apagar.operador', 'roles' => [UserLevel::MANAGER->value]];
-    const DESTROY_TENANT_LOGO = ['name' => 'auth.apagar.tenant.logo', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_BIND = ['nane' => 'auth.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_CUSTOMER_COMMISSION = ['name' => 'auth.mostrar.cliente.comissao', 'roles' => [UserLevel::ADMIN->value, UserLevel::CUSTOMER->value]];
-    const STORE_BIND = ['name' => 'auth.criar', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_ADMIN = ['name' => 'auth.criar.admin', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_CUSTOMER = ['name' => 'auth.criar.cliente', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_MANAGER = ['name' => 'auth.criar.gerente', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_OPERATOR = ['name' => 'auth.criar.operador', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_TENANT_LOGO = ['name' => 'auth.criar.tenant.logo', 'roles' => [UserLevel::ADMIN->value]];
-//    const STORE_TENANT = ['name' => 'auth.criar.tenant', 'roles' => []];
-//    const STORE_USERGROUP = ['name' => 'auth.criar.grupo_usuario', 'roles' => []];
+    public static string $bind = 'banca';
+
+    /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'banca.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_ADMIN = [
+        'name' => 'banca.listar.admin',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_CUSTOMER = [
+        'name' => 'banca.listar.cliente',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_MANAGER = [
+        'name' => 'banca.listar.gerente',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_AUDIT = [
+        'name' => 'banca.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_USER_PERMISSIONS = [
+        'name' => 'banca.listar.permissões',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_OPERATOR = [
+        'name' => 'banca.listar.cambista',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const LIST_USER_GROUP = [
+        'name' => 'banca.listar.grupo',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_MANAGER_COMMISSION = [
+        'name' => 'banca.listar.gerente.comissão',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_CUSTOMER_COMMISSION = [
+        'name' => 'banca.listar.cliente.comissão',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_OPERATOR_COMMISSION = [
+        'name' => 'banca.listar.cambista.comissão',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const LIST_OPERATOR_SETTINGS = [
+        'name' => 'banca.listar.cambista.configuração',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const LIST_TENANT_COLOR = [
+        'name' => 'banca.listar.banca.cores',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TENANT_MODULES = [
+        'name' => 'banca.listar.banca.módulos',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TENANT_SETTINGS = [
+        'name' => 'banca.listar.banca.configuração',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TENANT_REGULATION = [
+        'name' => 'banca.listar.banca.regulamento',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TENANT_LOGO = [
+        'name' => 'banca.listar.banca.logo',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TENANT_PREFERENCES = [
+        'name' => 'banca.listar.banca.preferências',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_TENANT_PAYMENT_INTEGRATION = [
+        'name' => 'banca.listar.banca.integração',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BIND = [
+        'name' => 'banca.atualizar',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_ADMIN = [
+        'name' => 'banca.atualizar.admin',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_BALANCE = [
+        'name' => 'banca.atualizar.saldo',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const UPDATE_CUSTOMER = [
+        'name' => 'banca.atualizar.cliente',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_USER_PERMISSIONS = [
+        'name' => 'banca.atualizar.permissões',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_MANAGER = [
+        'name' => 'banca.atualizar.gerente',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_MANAGER_COMMISSION = [
+        'name' => 'banca.atualizar.gerente.comissão',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_CUSTOMER_COMMISSION = [
+        'name' => 'banca.atualizar.cliente.comissão',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_OPERATOR = [
+        'name' => 'banca.atualizar.cambista',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const UPDATE_OPERATOR_COMMISSION = [
+        'name' => 'banca.atualizar.cambista.comissão',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const UPDATE_OPERATOR_SETTINGS = [
+        'name' => 'banca.atualizar.cambista.configuração',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const UPDATE_TENANT_MODULES = [
+        'name' => 'banca.atualizar.banca.módulos',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_REGULATION = [
+        'name' => 'banca.atualizar.banca.regulamento',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_SETTINGS = [
+        'name' => 'banca.atualizar.banca.configuração',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_COLOR = [
+        'name' => 'banca.atualizar.banca.cores',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_PREFERENCES = [
+        'name' => 'banca.atualizar.banca.preferências',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_LOGO = [
+        'name' => 'banca.atualizar.banca.logo',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_PAYMENT_INTEGRATION = [
+        'name' => 'banca.atualizar.banca.integração',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_USER_GROUP = [
+        'name' => 'banca.atualizar.grupo',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Destroy
+     */
+
+    const DESTROY_BIND = [
+        'name' => 'banca.apagar',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_ADMIN = [
+        'name' => 'banca.apagar.admin',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_CUSTOMER = [
+        'name' => 'banca.apagar.cliente',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_MANAGER = [
+        'name' => 'banca.apagar.gerente',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_OPERATOR = [
+        'name' => 'banca.apagar.cambista',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_TENANT_LOGO = [
+        'name' => 'banca.apagar.banca.logo',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_USER_GROUP = [
+        'name' => 'banca.apagar.grupo',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Store
+     */
+
+    const STORE_BIND = [
+        'name' => 'banca.criar',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_ADMIN = [
+        'name' => 'banca.criar.admin',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_MANAGER = [
+        'name' => 'banca.criar.gerente',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_OPERATOR = [
+        'name' => 'banca.criar.cambista',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const STORE_INVOICE = [
+        'name' => 'banca.criar.fatura',
+        'roles' => [self::OPERATOR, self::MANAGER]
+    ];
+    const STORE_WITHDRAWS = [
+        'name' => 'banca.criar.saque',
+        'roles' => [self::MANAGER]
+    ];
+    const STORE_USER_GROUP = [
+        'name' => 'banca.criar.grupo',
+        'roles' => [self::ADMIN]
+    ];
 }

@@ -6,22 +6,93 @@ use Setebit\Package\Enums\UserLevel;
 
 class BolaoPermissions
 {
-    public static string $bind = 'bolao';
+    const ADMIN = UserLevel::ADMIN->value;
+    const MANAGER = UserLevel::MANAGER->value;
+    const OPERATOR = UserLevel::OPERATOR->value;
+    const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    const LIST_BIND = ['name' => 'bolao.listar', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_AUDIT = ['name' => 'bolao.listar.auditoria', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_BOLLON = ['name' => 'bolao.listar.bolao', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_TICKET = ['name' => 'bolao.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const STORE_BIND = ['name' => 'bolao.criar', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_BOLLON = ['name' => 'bolao.criar.bolao', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_RESULT = ['name' => 'bolao.criar.resultado', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_TICKET = ['name' => 'bolao.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_BIND = ['name' => 'bolao.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_BOLLON = ['name' => 'bolao.mostrar.bolao', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_TICKET = ['name' => 'bolao.mostrar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const UPDATE_BIND = ['name' => 'bolao.atualizar', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_BOLLON = ['name' => 'bolao.atualizar.bolao', 'roles' => [UserLevel::MANAGER->value]];
-    const DESTROY_BIND = ['name' => 'bolao.apagar', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_BOLLON = ['name' => 'bolao.apagar.bolao', 'roles' => [UserLevel::MANAGER->value]];
-    const DESTROY_TICKET = ['name' => 'bolao.apagar.bilhete', 'roles' => [UserLevel::MANAGER->value]];
+    public static string $bind = 'bolão';
+
+    /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'bolão.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_AUDIT = [
+        'name' => 'bolão.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_BOLLON = [
+        'name' => 'bolão.listar.bolão',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const LIST_TICKET = [
+        'name' => 'bolão.listar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Store
+     */
+
+    const STORE_BIND = [
+        'name' => 'bolão.criar',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_BOLLON = [
+        'name' => 'bolão.criar.bolão',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RESULT = [
+        'name' => 'bolão.criar.resultado',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BIND = [
+        'name' => 'bolão.atualizar',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_BOLLON = [
+        'name' => 'bolão.atualizar.bolão',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Validate
+     */
+
+    const VALIDATE_TICKET = [
+        'name' => 'bolão.validar.bilhete',
+        'roles' => [self::OPERATOR]
+    ];
+
+
+    /**
+     * Cancel
+     */
+
+    const CANCEL_TICKET = [
+        'name' => 'bolão.cancelar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Destroy
+     */
+
+    const DESTROY_BIND = [
+        'name' => 'bolão.apagar',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_BOLLON = [
+        'name' => 'bolão.apagar.bolão',
+        'roles' => [self::ADMIN]
+    ];
 }

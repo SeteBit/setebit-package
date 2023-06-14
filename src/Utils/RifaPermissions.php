@@ -6,23 +6,92 @@ use Setebit\Package\Enums\UserLevel;
 
 class RifaPermissions
 {
+    const ADMIN = UserLevel::ADMIN->value;
+    const MANAGER = UserLevel::MANAGER->value;
+    const OPERATOR = UserLevel::OPERATOR->value;
+    const CUSTOMER = UserLevel::CUSTOMER->value;
+
     public static string $bind = 'rifa';
 
-    const LIST_BIND = ['name' => 'rifa.listar', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_AUDIT = ['name' => 'rifa.listar.auditoria', 'roles' => [UserLevel::ADMIN->value]];
-    const LIST_RAFFLE = ['name' => 'rifa.listar.rifa', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_RESULT = ['name' => 'rifa.listar.resultado', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const LIST_TICKET = ['name' => 'rifa.listar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    CONST SHOW_BIND = ['name' => 'rifa.mostrar', 'roles' => [UserLevel::ADMIN->value]];
-    const SHOW_RAFFLE = ['name' => 'rifa.mostrar.rifa', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const SHOW_TICKET = ['name' => 'rifa.mostrar.bilhete', 'roles' => [UserLevel::MANAGER->value, UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const STORE_BIND = ['name' => 'rifa.criar', 'roles' => [UserLevel::ADMIN->value]];
-    const STORE_RAFFLE = ['name' => 'rifa.criar.rifa', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_RESULT = ['name' => 'rifa.criar.resultado', 'roles' => [UserLevel::MANAGER->value]];
-    const STORE_TICKET = ['name' => 'rifa.criar.bilhete', 'roles' => [UserLevel::OPERATOR->value, UserLevel::CUSTOMER->value]];
-    const UPDATE_BIND = ['name' => 'rifa.atualizar', 'roles' => [UserLevel::ADMIN->value]];
-    const UPDATE_RAFFLE = ['name' => 'rifa.atualizar.rifa', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_BIND = ['name' => 'rifa.apagar', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_TICKET = ['name' => 'rifa.apagar.bilhete', 'roles' => [UserLevel::ADMIN->value]];
-    const DESTROY_RAFFLE = ['name' => 'rifa.apagar.rifa', 'roles' => [UserLevel::ADMIN->value]];
+    /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'rifa.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_AUDIT = [
+        'name' => 'rifa.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_RAFFLE = [
+        'name' => 'rifa.listar.rifa',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const LIST_TICKET = [
+        'name' => 'rifa.listar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Store
+     */
+
+    const STORE_BIND = [
+        'name' => 'rifa.criar',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RAFFLE = [
+        'name' => 'rifa.criar.rifa',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RESULT = [
+        'name' => 'rifa.criar.resultado',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BIND = [
+        'name' => 'rifa.atualizar',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_RAFFLE = [
+        'name' => 'rifa.atualizar.rifa',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Validate
+     */
+
+    const VALIDATE_TICKET = [
+        'name' => 'rifa.validar.bilhete',
+        'roles' => [self::OPERATOR]
+    ];
+
+    /**
+     * Cancel
+     */
+
+    const CANCEL_TICKET = [
+        'name' => 'rifa.cancelar.bilhete',
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+
+    /**
+     * Destroy
+     */
+
+    const DESTROY_BIND = [
+        'name' => 'rifa.apagar',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_RAFFLE = [
+        'name' => 'rifa.apagar.rifa',
+        'roles' => [self::ADMIN]
+    ];
 }
