@@ -37,6 +37,10 @@ class TenantPermissions
         'name' => 'banca.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
+    const LIST_FINANCIAL_ENTRY = [
+        'name' => 'banca.listar.financeiro.lançamento',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
     const LIST_USER_PERMISSIONS = [
         'name' => 'banca.listar.permissões',
         'roles' => [self::ADMIN]
@@ -92,6 +96,14 @@ class TenantPermissions
     const LIST_TENANT_PAYMENT_INTEGRATION = [
         'name' => 'banca.listar.banca.integração',
         'roles' => [self::ADMIN]
+    ];
+    const LIST_INVOICE = [
+        'name' => 'banca.listar.depósito',
+        'roles' => [self::OPERATOR, self::MANAGER]
+    ];
+    const LIST_WITHDRAWS = [
+        'name' => 'banca.listar.saque',
+        'roles' => [self::MANAGER]
     ];
 
     /**
@@ -207,6 +219,10 @@ class TenantPermissions
         'name' => 'banca.apagar.grupo',
         'roles' => [self::ADMIN]
     ];
+    const DESTROY_FINANCIAL_ENTRY = [
+        'name' => 'banca.apagar.financeiro.lançamento',
+        'roles' => [self::ADMIN]
+    ];
 
     /**
      * Store
@@ -229,7 +245,7 @@ class TenantPermissions
         'roles' => [self::ADMIN, self::MANAGER]
     ];
     const STORE_INVOICE = [
-        'name' => 'banca.criar.fatura',
+        'name' => 'banca.criar.depósito',
         'roles' => [self::OPERATOR, self::MANAGER]
     ];
     const STORE_WITHDRAWS = [
@@ -238,6 +254,10 @@ class TenantPermissions
     ];
     const STORE_USER_GROUP = [
         'name' => 'banca.criar.grupo',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_FINANCIAL_ENTRY = [
+        'name' => 'banca.criar.financeiro.lançamento',
         'roles' => [self::ADMIN]
     ];
 }
