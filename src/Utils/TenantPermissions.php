@@ -37,6 +37,10 @@ class TenantPermissions
         'name' => 'banca.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
+    const LIST_FINANCIAL_ENTRY = [
+        'name' => 'banca.listar.financeiro.lançamento',
+        'roles' => [self::ADMIN]
+    ];
     const LIST_USER_PERMISSIONS = [
         'name' => 'banca.listar.permissões',
         'roles' => [self::ADMIN]
@@ -207,6 +211,10 @@ class TenantPermissions
         'name' => 'banca.apagar.grupo',
         'roles' => [self::ADMIN]
     ];
+    const DESTROY_FINANCIAL_ENTRY = [
+        'name' => 'banca.apagar.financeiro.lançamento',
+        'roles' => [self::ADMIN]
+    ];
 
     /**
      * Store
@@ -238,6 +246,10 @@ class TenantPermissions
     ];
     const STORE_USER_GROUP = [
         'name' => 'banca.criar.grupo',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_FINANCIAL_ENTRY = [
+        'name' => 'banca.criar.financeiro.lançamento',
         'roles' => [self::ADMIN]
     ];
 }
