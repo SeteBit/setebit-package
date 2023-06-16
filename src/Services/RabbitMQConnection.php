@@ -61,7 +61,21 @@ class RabbitMQConnection
 
         $this->channel->basic_publish(
             msg: $message,
-            routing_key: $this->queue
+            routing_key: $this->queue,
+        );
+    }
+
+    public function sendMessageToExchange(string $content, string $exchange): void
+    {
+        if ($this->connection === null) {
+            $this->createConnection();
+        }
+
+        $message = new AMQPMessage($content);
+
+        $this->channel->basic_publish(
+            msg: $message,
+            exchange: $exchange
         );
     }
 
