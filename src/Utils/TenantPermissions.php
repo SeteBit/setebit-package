@@ -99,11 +99,11 @@ class TenantPermissions
     ];
     const LIST_INVOICE = [
         'name' => 'banca.listar.depósito',
-        'roles' => [self::OPERATOR, self::MANAGER]
+        'roles' => [self::ADMIN, self::CUSTOMER]
     ];
     const LIST_WITHDRAWS = [
         'name' => 'banca.listar.saque',
-        'roles' => [self::MANAGER]
+        'roles' => [self::ADMIN, self::CUSTOMER]
     ];
 
     /**
@@ -250,7 +250,7 @@ class TenantPermissions
     ];
     const STORE_WITHDRAWS = [
         'name' => 'banca.criar.saque',
-        'roles' => [self::MANAGER]
+        'roles' => [self::CUSTOMER]
     ];
     const STORE_USER_GROUP = [
         'name' => 'banca.criar.grupo',
