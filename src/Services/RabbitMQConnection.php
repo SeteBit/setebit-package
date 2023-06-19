@@ -79,14 +79,14 @@ class RabbitMQConnection
         );
     }
 
-    public function consumeMessages(callable $callback): void
+    public function consumeMessages(callable $callback, string $queue = null): void
     {
         if ($this->connection === null) {
             $this->createConnection();
         }
 
         $this->channel->basic_consume(
-            queue: $this->queue,
+            queue: $queue ?? $this->queue,
             callback: $callback
         );
 
