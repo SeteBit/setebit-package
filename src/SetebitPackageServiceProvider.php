@@ -14,6 +14,7 @@ class SetebitPackageServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
+            __DIR__ . '/../database/migrations' => database_path('migrations')
         ]);
     }
 

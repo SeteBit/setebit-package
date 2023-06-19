@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 
 class PrizedrawsConsume extends Command
 {
-    protected $signature = 'queue:consume';
+    protected $signature = 'prizedraws:consume';
     protected $description = 'Command to consume prizedraws queue';
 
     public function handle(): void
