@@ -51,7 +51,7 @@ class RabbitMQConnection
         }
     }
 
-    public function sendMessage(string $content): void
+    public function sendMessage(string $content, string $queue = null): void
     {
         if ($this->connection === null) {
             $this->createConnection();
@@ -61,7 +61,7 @@ class RabbitMQConnection
 
         $this->channel->basic_publish(
             msg: $message,
-            routing_key: $this->queue,
+            routing_key: $queue ?? $this->queue,
         );
     }
 
