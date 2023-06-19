@@ -3,6 +3,7 @@
 namespace Setebit\Package;
 
 use Illuminate\Support\ServiceProvider;
+use Setebit\Package\Console\PrizedrawsConsume;
 use Setebit\Package\Http\Middleware\BindTheHeader;
 
 class SetebitPackageServiceProvider extends ServiceProvider
@@ -19,5 +20,9 @@ class SetebitPackageServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/setebit-package.php', 'setebit-package');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([PrizedrawsConsume::class]);
+        }
     }
 }
