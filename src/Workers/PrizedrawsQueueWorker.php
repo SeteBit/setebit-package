@@ -17,11 +17,12 @@ class PrizedrawsQueueWorker
 
             $action = $bodyParsed['action'];
             $prizedraw = $bodyParsed['prizedraw'];
+            $externalId = $prizedraw['external_prizedraw_id'];
 
             match ($action) {
                 'created' => (new StorePrizedraw())->handle($prizedraw),
-                'updated' => (new UpdatePrizedraw())->handle($prizedraw['external_prizedraw_id'], $prizedraw),
-                'canceled' => (new CancelPrizedraw())->handle($prizedraw['external_prizedraw_id'])
+                'updated' => (new UpdatePrizedraw())->handle($externalId, $prizedraw),
+                'canceled' => (new CancelPrizedraw())->handle($externalId)
             };
 
             $message->ack();
