@@ -246,7 +246,7 @@ class TenantPermissions
     ];
     const STORE_INVOICE = [
         'name' => 'banca.criar.depósito',
-        'roles' => [self::OPERATOR, self::MANAGER]
+        'roles' => [self::OPERATOR, self::CUSTOMER]
     ];
     const STORE_WITHDRAWS = [
         'name' => 'banca.criar.saque',
