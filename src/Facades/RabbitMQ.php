@@ -5,8 +5,8 @@ namespace Setebit\Package\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void sendMessage(string $message)
- * @method static void consumeMessages(callable $callback)
+ * @method static void sendMessage(string $message, string $queue = null)
+ * @method static void consumeMessages(callable $callback, string $queue = null)
  */
 class RabbitMQ extends Facade
 {
