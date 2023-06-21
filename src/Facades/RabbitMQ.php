@@ -12,6 +12,6 @@ class RabbitMQ extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Setebit\Package\Services\RabbitMQConnection::class;
+        return \Setebit\Package\Services\RabbitMQConnection::getInstance();
     }
 }

@@ -8,8 +8,9 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitMQConnection
 {
+    private static ?self $instance = null;
     private AMQPChannel $channel;
-    private AMQPStreamConnection|null $connection = null;
+    private AMQPStreamConnection $connection;
     private string $host;
     private int $port;
     private string $user;
@@ -17,88 +18,74 @@ class RabbitMQConnection
     private string $queue;
     private string $vhost;
 
-    public function __destruct()
-    {
-        $this->closeConnection();
-    }
-
-    private function createConnection(): void
+    private function __construct()
     {
         $this->getEnvValues();
 
         $this->connection = new AMQPStreamConnection(
-            host: $this->host,
-            port: $this->port,
-            user: $this->user,
-            password: $this->pass,
-            vhost: $this->vhost,
+            $this->host,
+            $this->port,
+            $this->user,
+            $this->pass,
+            $this->vhost
         );
 
         $this->channel = $this->connection->channel();
 
         $this->channel->queue_declare(
-            queue: $this->queue,
-            durable: true,
-            auto_delete: false,
+            $this->queue,
+            true,
+            false,
+            false,
+            false
         );
     }
 
-    private function closeConnection(): void
+    public static function getInstance(): self
     {
-        if ($this->connection !== null) {
-            $this->channel->close();
-            $this->connection->close();
+        if (self::$instance === null) {
+            self::$instance = new self();
         }
+
+        return self::$instance;
     }
 
     public function sendMessage(string $content, string $queue = null): void
     {
-        if ($this->connection === null) {
-            $this->createConnection();
-        }
-
         $message = new AMQPMessage($content);
 
         $this->channel->basic_publish(
-            msg: $message,
-            routing_key: $queue ?? $this->queue,
+            $message,
+            '',
+            $queue ?? $this->queue
         );
-
-        $this->closeConnection();
     }
 
     public function sendMessageToExchange(string $content, string $exchange): void
     {
-        if ($this->connection === null) {
-            $this->createConnection();
-        }
-
         $message = new AMQPMessage($content);
 
         $this->channel->basic_publish(
-            msg: $message,
-            exchange: $exchange
+            $message,
+            $exchange
         );
-
-        $this->closeConnection();
     }
 
     public function consumeMessages(callable $callback, string $queue = null): void
     {
-        if ($this->connection === null) {
-            $this->createConnection();
-        }
-
         $this->channel->basic_consume(
-            queue: $queue ?? $this->queue,
-            callback: $callback
+            $queue ?? $this->queue,
+            '',
+            false,
+            false,
+            false,
+            false,
+            $callback
         );
 
         while ($this->channel->is_consuming()) {
             $this->channel->wait();
         }
-
-        $this->closeConnection();
     }
 
     private function getEnvValues(): void
@@ -109,5 +96,11 @@ class RabbitMQConnection
         $this->pass = config('setebit-package.rabbitMQ.pass');
         $this->queue = config('setebit-package.rabbitMQ.queue');
         $this->vhost = config('setebit-package.rabbitMQ.vhost');
+    }
+
+    public function __destruct()
+    {
+        $this->channel->close();
+        $this->connection->close();
     }
 }
