@@ -63,6 +63,8 @@ class RabbitMQConnection
             msg: $message,
             routing_key: $queue ?? $this->queue,
         );
+
+        $this->closeConnection();
     }
 
     public function sendMessageToExchange(string $content, string $exchange): void
@@ -77,6 +79,8 @@ class RabbitMQConnection
             msg: $message,
             exchange: $exchange
         );
+
+        $this->closeConnection();
     }
 
     public function consumeMessages(callable $callback, string $queue = null): void
@@ -93,6 +97,8 @@ class RabbitMQConnection
         while ($this->channel->is_consuming()) {
             $this->channel->wait();
         }
+
+        $this->closeConnection();
     }
 
     private function getEnvValues(): void
