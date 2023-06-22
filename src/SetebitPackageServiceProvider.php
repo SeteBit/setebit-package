@@ -5,6 +5,7 @@ namespace Setebit\Package;
 use Illuminate\Support\ServiceProvider;
 use Setebit\Package\Console\PrizedrawsConsume;
 use Setebit\Package\Http\Middleware\BindTheHeader;
+use Setebit\Package\Services\RabbitMQConnection;
 
 class SetebitPackageServiceProvider extends ServiceProvider
 {
@@ -25,5 +26,9 @@ class SetebitPackageServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([PrizedrawsConsume::class]);
         }
+
+        $this->app->singleton('rabbitmq', function() {
+            return RabbitMQConnection::getInstance();
+        });
     }
 }
