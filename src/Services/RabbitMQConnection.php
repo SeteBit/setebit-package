@@ -86,6 +86,9 @@ class RabbitMQConnection
         while ($this->channel->is_consuming()) {
             $this->channel->wait();
         }
+
+        $this->channel->close();
+        $this->connection->close();
     }
 
     private function getEnvValues(): void
