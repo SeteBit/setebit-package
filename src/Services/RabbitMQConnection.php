@@ -71,7 +71,7 @@ class RabbitMQConnection
         );
     }
 
-    public function consumeMessages(callable $callback, string $queue = null): void
+    public function consumeMessages(callable $callback, string $queue = null, int $timeout = 60): void
     {
         $this->channel->basic_consume(
             $queue ?? $this->queue,
@@ -83,12 +83,11 @@ class RabbitMQConnection
             $callback
         );
 
-        while ($this->channel->is_consuming()) {
-            $this->channel->wait();
-        }
-
-        $this->channel->close();
-        $this->connection->close();
+        try {
+            while ($this->channel->is_consuming()) {
+                $this->channel->wait(null, false, $timeout);
+            }
+        } catch (\PhpAmqpLib\Exception\AMQPTimeoutException $e) {}
     }
 
     private function getEnvValues(): void
