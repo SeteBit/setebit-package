@@ -87,7 +87,12 @@ class RabbitMQConnection
             while ($this->channel->is_consuming()) {
                 $this->channel->wait(null, false, $timeout);
             }
-        } catch (\PhpAmqpLib\Exception\AMQPTimeoutException $e) {}
+        } catch (\PhpAmqpLib\Exception\AMQPTimeoutException) {
+
+        } finally {
+            $this->channel->close();
+            $this->connection->close();
+        }
     }
 
     private function getEnvValues(): void
