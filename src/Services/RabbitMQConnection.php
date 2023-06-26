@@ -92,10 +92,7 @@ class RabbitMQConnection
                 $this->channel->wait(null, false, $timeout);
             }
         } catch (\PhpAmqpLib\Exception\AMQPTimeoutException) {
-
-        } finally {
-            $this->channel->close();
-            $this->connection->close();
+            $this->closeConnection();
         }
     }
 
