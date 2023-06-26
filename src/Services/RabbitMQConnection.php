@@ -59,6 +59,8 @@ class RabbitMQConnection
             '',
             $queue ?? $this->queue
         );
+
+        $this->closeConnection();
     }
 
     public function sendMessageToExchange(string $content, string $exchange): void
@@ -69,6 +71,8 @@ class RabbitMQConnection
             $message,
             $exchange
         );
+
+        $this->closeConnection();
     }
 
     public function consumeMessages(callable $callback, string $queue = null, int $timeout = 60): void
@@ -105,9 +109,14 @@ class RabbitMQConnection
         $this->vhost = config('setebit-package.rabbitMQ.vhost');
     }
 
-    public function __destruct()
+    private function closeConnection(): void
     {
         $this->channel->close();
         $this->connection->close();
+    }
+
+    public function __destruct()
+    {
+        $this->closeConnection();
     }
 }
