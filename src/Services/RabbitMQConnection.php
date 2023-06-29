@@ -8,7 +8,6 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitMQConnection
 {
-    private static ?self $instance = null;
     private AMQPChannel $channel;
     private AMQPStreamConnection $connection;
     private string $host;
@@ -18,7 +17,7 @@ class RabbitMQConnection
     private string $queue;
     private string $vhost;
 
-    private function __construct()
+    public function __construct()
     {
         $this->getEnvValues();
 
@@ -39,15 +38,6 @@ class RabbitMQConnection
             false,
             false
         );
-    }
-
-    public static function getInstance(): self
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
     }
 
     public function sendMessage(string $content, string $queue = null): void

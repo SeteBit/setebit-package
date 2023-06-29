@@ -27,8 +27,8 @@ class SetebitPackageServiceProvider extends ServiceProvider
             $this->commands([PrizedrawsConsume::class]);
         }
 
-        $this->app->singleton('rabbitmq', function() {
-            return RabbitMQConnection::getInstance();
+        $this->app->bind('rabbitmq', function ($app) {
+            return new RabbitMQConnection();
         });
     }
 }
