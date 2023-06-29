@@ -61,6 +61,10 @@ class TenantPermissions
         'name' => 'banca.listar.cliente.comissão',
         'roles' => [self::ADMIN]
     ];
+    const LIST_CUSTOMER_AFFILIATES = [
+        'name' => 'banca.listar.cliente.afiliados',
+        'roles' => [self::ADMIN, self::CUSTOMER]
+    ];
     const LIST_OPERATOR_COMMISSION = [
         'name' => 'banca.listar.cambista.comissão',
         'roles' => [self::ADMIN, self::MANAGER]
