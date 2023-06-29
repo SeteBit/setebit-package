@@ -71,7 +71,7 @@ class TenantPermissions
     ];
     const LIST_REPORT_FINANCIAL_OPERATOR = [
         'name' => 'banca.listar.cambista.relatório',
-        'roles' => [self::ADMIN, self::MANAGER]
+        'roles' => [self::OPERATOR]
     ];
     const LIST_TENANT_COLOR = [
         'name' => 'banca.listar.banca.cores',
