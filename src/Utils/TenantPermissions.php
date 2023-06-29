@@ -69,6 +69,10 @@ class TenantPermissions
         'name' => 'banca.listar.cambista.configuração',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
+    const LIST_REPORT_FINANCIAL_OPERATOR = [
+        'name' => 'banca.listar.cambista.relatório',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
     const LIST_TENANT_COLOR = [
         'name' => 'banca.listar.banca.cores',
         'roles' => [self::ADMIN]
@@ -105,6 +109,19 @@ class TenantPermissions
         'name' => 'banca.listar.saque',
         'roles' => [self::ADMIN, self::CUSTOMER]
     ];
+    const LIST_CASH_REGISTER = [
+        'name' => 'banca.listar.caixa',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+    const LIST_REPORT_FINANCIAL_TENANT_ONLINE = [
+        'name' => 'banca.listar.banca.relatório.online',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_REPORT_FINANCIAL_TENANT_ONSITE = [
+        'name' => 'banca.listar.banca.relatório.presencial',
+        'roles' => [self::ADMIN, self::MANAGER]
+    ];
+
 
     /**
      * Update
