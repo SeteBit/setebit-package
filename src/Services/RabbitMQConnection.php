@@ -8,7 +8,6 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitMQConnection
 {
-    private static ?self $instance = null;
     private AMQPChannel $channel;
     private AMQPStreamConnection $connection;
     private string $host;
@@ -18,7 +17,7 @@ class RabbitMQConnection
     private string $queue;
     private string $vhost;
 
-    private function __construct()
+    public function __construct()
     {
         $this->getEnvValues();
 
@@ -41,17 +40,12 @@ class RabbitMQConnection
         );
     }
 
-    public static function getInstance(): self
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
     public function sendMessage(string $content, string $queue = null): void
     {
+        if (!$this->channel->is_open()) {
+            $this->openChannel();
+        }
+
         $message = new AMQPMessage($content);
 
         $this->channel->basic_publish(
@@ -65,6 +59,10 @@ class RabbitMQConnection
 
     public function sendMessageToExchange(string $content, string $exchange): void
     {
+        if (!$this->channel->is_open()) {
+            $this->openChannel();
+        }
+
         $message = new AMQPMessage($content);
 
         $this->channel->basic_publish(
@@ -104,6 +102,11 @@ class RabbitMQConnection
         $this->pass = config('setebit-package.rabbitMQ.pass');
         $this->queue = config('setebit-package.rabbitMQ.queue');
         $this->vhost = config('setebit-package.rabbitMQ.vhost');
+    }
+
+    private function openChannel(): void
+    {
+        $this->channel = $this->connection->channel();
     }
 
     private function closeConnection(): void
