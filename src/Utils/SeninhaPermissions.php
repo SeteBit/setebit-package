@@ -66,20 +66,19 @@ class SeninhaPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => 'seninha.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => 'seninha.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => 'seninha.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 }

@@ -65,22 +65,20 @@ class DoisQuinhentosPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => '2_pra_500.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => '2_pra_500.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => '2_pra_500.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**

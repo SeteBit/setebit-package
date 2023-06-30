@@ -65,21 +65,19 @@ class SenaBrasilPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => 'sena_brasil.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => 'sena_brasil.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => 'sena_brasil.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 }

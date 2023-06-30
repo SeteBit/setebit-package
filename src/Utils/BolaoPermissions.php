@@ -65,22 +65,20 @@ class BolaoPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => 'bolão.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => 'bolão.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => 'bolão.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**
