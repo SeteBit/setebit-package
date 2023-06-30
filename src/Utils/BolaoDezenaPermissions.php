@@ -52,22 +52,20 @@ class BolaoDezenaPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => 'bolão_de_dezenas.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => 'bolão_de_dezenas.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => 'bolão_de_dezenas.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**

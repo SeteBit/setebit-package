@@ -122,21 +122,19 @@ class TradicionalPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => 'tradicional.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => 'tradicional.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => 'tradicional.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 }

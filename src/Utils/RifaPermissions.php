@@ -65,21 +65,20 @@ class RifaPermissions
     ];
 
     /**
-     * Validate
+     * Ticket
      */
 
     const VALIDATE_TICKET = [
         'name' => 'rifa.validar.bilhete',
         'roles' => [self::OPERATOR]
     ];
-
-    /**
-     * Cancel
-     */
-
     const CANCEL_TICKET = [
         'name' => 'rifa.cancelar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    ];
+    const MARK_AS_PAID_TICKET = [
+        'name' => 'rifa.pagar.bilhete',
+        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**
