@@ -81,6 +81,10 @@ class TenantPermissions
         'name' => 'banca.listar.banca.cores',
         'roles' => [self::ADMIN]
     ];
+    const LIST_TENANT_CONTACTS = [
+        'name' => 'banca.listar.banca.contatos',
+        'roles' => [self::CUSTOMER]
+    ];
     const LIST_TENANT_MODULES = [
         'name' => 'banca.listar.banca.módulos',
         'roles' => [self::ADMIN]
@@ -193,6 +197,10 @@ class TenantPermissions
     ];
     const UPDATE_TENANT_COLOR = [
         'name' => 'banca.atualizar.banca.cores',
+        'roles' => [self::ADMIN]
+    ];
+    const UPDATE_TENANT_CONTACTS = [
+        'name' => 'banca.atualizar.banca.contatos',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_PREFERENCES = [
