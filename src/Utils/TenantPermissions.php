@@ -125,6 +125,10 @@ class TenantPermissions
         'name' => 'banca.listar.banca.relatório.presencial',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
+    const LIST_AD = [
+        'name' => 'banca.listar.anúncio',
+        'roles' => [self::ADMIN]
+    ];
 
 
     /**
@@ -207,6 +211,10 @@ class TenantPermissions
         'name' => 'banca.atualizar.grupo',
         'roles' => [self::ADMIN]
     ];
+    const UPDATE_AD = [
+        'name' => 'banca.atualizar.anúncio',
+        'roles' => [self::ADMIN]
+    ];
 
     /**
      * Destroy
@@ -244,6 +252,10 @@ class TenantPermissions
         'name' => 'banca.apagar.financeiro.lançamento',
         'roles' => [self::ADMIN]
     ];
+    const DESTROY_AD = [
+        'name' => 'banca.apagar.anúncio',
+        'roles' => [self::ADMIN]
+    ];
 
     /**
      * Store
@@ -279,6 +291,10 @@ class TenantPermissions
     ];
     const STORE_FINANCIAL_ENTRY = [
         'name' => 'banca.criar.financeiro.lançamento',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_AD = [
+        'name' => 'banca.criar.anúncio',
         'roles' => [self::ADMIN]
     ];
 }
