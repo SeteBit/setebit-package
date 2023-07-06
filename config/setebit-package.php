@@ -8,7 +8,8 @@ return [
         'x-permissions'
     ],
 
-    'url_api_gateway' => env('URL_API_GATEWAY', 'https://api.teste.bet:8000'),
+    'url_api_gateway' => env('URL_API_GATEWAY', 'https://api.teste.bet:8443'),
+    'url_storage' => env('URL_STORAGE', 'https://storage.teste.bet'),
 
     'rabbitMQ' => [
         'user' => env('RABBITMQ_USER', 'guest'),
