@@ -97,10 +97,6 @@ class TenantPermissions
         'name' => 'banca.listar.banca.regulamento',
         'roles' => [self::ADMIN]
     ];
-    const LIST_TENANT_LOGO = [
-        'name' => 'banca.listar.banca.logo',
-        'roles' => [self::ADMIN]
-    ];
     const LIST_TENANT_PREFERENCES = [
         'name' => 'banca.listar.banca.preferências',
         'roles' => [self::ADMIN]

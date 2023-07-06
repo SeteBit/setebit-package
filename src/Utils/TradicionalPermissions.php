@@ -43,7 +43,7 @@ class TradicionalPermissions
     ];
     const LIST_SETTINGS = [
         'name' => 'tradicional.listar.configuração',
-        'roles' => [self::ADMIN, self::MANAGER]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_INSTANT_LOTTERY_FINANCIAL = [
         'name' => 'tradicional.listar.caixa_loteria_instantânea',
