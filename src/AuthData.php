@@ -40,7 +40,7 @@ readonly final class AuthData
         return $this->headers['token'] ?? null;
     }
 
-    public function permissions(): array|null
+    public function permissions(): array|object|null
     {
         return $this->headers['permissions'] ?? null;
     }

@@ -18,7 +18,6 @@ class BindTheHeader
             ->only(config('setebit-package.allowed_headers'))
             ->each(function ($headerValue, $headerName) use ($headers) {
                 $headerName = Str::of($headerName)->replace('x-', '')->replace('-', '_')->camel();
-                $headerValue = is_array($headerValue) ? $headerValue[0] : $headerValue;
 
                 $headers->put($headerName->value(), json_decode($headerValue));
             });
