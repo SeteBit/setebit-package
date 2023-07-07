@@ -19,7 +19,7 @@ class BindTheHeader
             ->each(function ($headerValue, $headerName) use ($headers) {
                 $headerName = Str::of($headerName)->replace('x-', '')->replace('-', '_')->camel();
 
-                $headers->put($headerName->value(), json_decode($headerValue));
+                $headers->put($headerName->value(), json_decode($headerValue[0]));
             });
 
         App::scoped(AuthData::class, function () use ($headers, $request) {
