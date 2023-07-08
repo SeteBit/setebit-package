@@ -8,7 +8,9 @@ class StorePrizedraw
 {
     public function handle(array $data): Prizedraw
     {
-        $prizedraw = Prizedraw::withoutGlobalScope('tenant')->create($data);
+        $prizedraw = Prizedraw::withoutEvents(function () use ($data) {
+            return Prizedraw::create($data);
+        });
 
         return $prizedraw;
     }
