@@ -8,7 +8,7 @@ class StorePrizedraw
 {
     public function handle(array $data): Prizedraw
     {
-        $prizedraw = Prizedraw::create($data);
+        $prizedraw = Prizedraw::withoutGlobalScope('tenant')->create($data);
 
         return $prizedraw;
     }
