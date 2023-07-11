@@ -8,7 +8,9 @@ class StorePrizedraw
 {
     public function handle(array $data): Prizedraw
     {
-        $prizedraw = Prizedraw::create($data);
+        $prizedraw = Prizedraw::withoutEvents(function () use ($data) {
+            return Prizedraw::create($data);
+        });
 
         return $prizedraw;
     }
