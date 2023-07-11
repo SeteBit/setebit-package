@@ -29,10 +29,6 @@ class DoisQuinhentosPermissions
         'name' => '2_pra_500.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
-    const LIST_TWOFIVEHUNDRED = [
-        'name' => '2_pra_500.listar.2_pra_500',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     /**
      * Store

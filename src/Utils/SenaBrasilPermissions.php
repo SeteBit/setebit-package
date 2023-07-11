@@ -25,10 +25,6 @@ class SenaBrasilPermissions
         'name' => 'sena_brasil.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_CONCOURSE = [
-        'name' => 'sena_brasil.listar.concurso',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
     const LIST_TICKET = [
         'name' => 'sena_brasil.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
