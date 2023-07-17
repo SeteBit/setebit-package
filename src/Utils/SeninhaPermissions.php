@@ -30,10 +30,6 @@ class SeninhaPermissions
         'name' => 'seninha.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
-    const LIST_CONCOURSE = [
-        'name' => 'seninha.listar.concurso',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     /**
      * Store

@@ -25,10 +25,6 @@ class BolaoDezenaPermissions
         'name' => 'bolão_de_dezenas.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_BOLLON = [
-        'name' => 'bolão_de_dezenas.listar.bolão_de_dezenas',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
     const LIST_TICKET = [
         'name' => 'bolão_de_dezenas.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]

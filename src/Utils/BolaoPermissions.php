@@ -25,10 +25,6 @@ class BolaoPermissions
         'name' => 'bolão.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_BOLLON = [
-        'name' => 'bolão.listar.bolão',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
     const LIST_TICKET = [
         'name' => 'bolão.listar.bilhete',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
