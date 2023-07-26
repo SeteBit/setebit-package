@@ -3,6 +3,7 @@
 namespace Setebit\Package;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 readonly final class AuthData
@@ -19,15 +20,19 @@ readonly final class AuthData
             return $this->headers['tenant'];
         }
 
-        $response = Http::get(config('setebit-package.url_api_gateway') . "/tenants", [
-            'origin' => $this->request->headers->get('origin'),
-        ]);
+        $cacheKey = 'tenant-' . $this->request->headers->get('origin');
 
-        if ($response->failed()) {
-            return null;
-        }
+        return Cache::remember($cacheKey, now()->addMinutes(5), function () {
+            $response = Http::get(config('setebit-package.url_api_gateway') . "/tenants", [
+                'origin' => $this->request->headers->get('origin'),
+            ]);
 
-        return $response->object()?->tenant;
+            if ($response->failed()) {
+                return null;
+            }
+
+            return $response->object()?->tenant;
+        });
     }
 
     public function user(): object|null

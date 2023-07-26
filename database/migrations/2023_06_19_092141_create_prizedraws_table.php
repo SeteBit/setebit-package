@@ -4,15 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('prizedraws', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->unsignedBigInteger('external_prizedraw_id');
+            $table->unsignedBigInteger('external_prizedraw_id')->index();
             $table->unsignedBigInteger('tenant_id');
             $table->enum('situation', ['todos', 'pendente', 'vencedor', 'perdedor', 'cancelado']);
             $table->decimal('min_value', 10, 4);
