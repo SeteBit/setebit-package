@@ -21,8 +21,9 @@ readonly final class AuthData
         }
 
         $cacheKey = 'tenant-' . $this->request->headers->get('origin');
+        $duration = config('setebit-package.tenant_cache_duration_minutes');
 
-        return Cache::remember($cacheKey, now()->addMinutes(5), function () {
+        return Cache::remember($cacheKey, now()->addMinutes($duration), function () {
             $response = Http::get(config('setebit-package.url_api_gateway') . "/tenants", [
                 'origin' => $this->request->headers->get('origin'),
             ]);
