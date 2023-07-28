@@ -24,9 +24,9 @@ readonly final class AuthData
         $duration = config('setebit-package.tenant_cache_duration_minutes');
 
         return Cache::remember($cacheKey, now()->addMinutes($duration), function () {
-            $response = Http::get(config('setebit-package.url_api_gateway') . "/tenants", [
+            $response = Http::withHeaders([
                 'origin' => $this->request->headers->get('origin'),
-            ]);
+            ])->get(config('setebit-package.url_api_gateway') . "/tenants");
 
             if ($response->failed()) {
                 return null;
