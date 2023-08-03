@@ -113,7 +113,7 @@ class UserPermissions
 
     const UPDATE_CUSTOMER = [
         'name' => 'usuário.atualizar.cliente',
-        'roles' => [self::ADMIN]
+        'roles' => [self::ADMIN, self::CUSTOMER]
     ];
 
     const UPDATE_USER_PERMISSIONS = [
