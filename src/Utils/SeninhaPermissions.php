@@ -71,7 +71,7 @@ class SeninhaPermissions
     ];
     const CANCEL_TICKET = [
         'name' => 'seninha.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
     const MARK_AS_PAID_TICKET = [
         'name' => 'seninha.pagar.bilhete',

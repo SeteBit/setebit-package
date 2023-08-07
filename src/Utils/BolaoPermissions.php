@@ -70,7 +70,7 @@ class BolaoPermissions
     ];
     const CANCEL_TICKET = [
         'name' => 'bolão.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
     const MARK_AS_PAID_TICKET = [
         'name' => 'bolão.pagar.bilhete',

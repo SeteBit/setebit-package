@@ -70,7 +70,7 @@ class DoisQuinhentosPermissions
     ];
     const CANCEL_TICKET = [
         'name' => '2_pra_500.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
     const MARK_AS_PAID_TICKET = [
         'name' => '2_pra_500.pagar.bilhete',

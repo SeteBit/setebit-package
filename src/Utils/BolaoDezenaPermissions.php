@@ -57,7 +57,7 @@ class BolaoDezenaPermissions
     ];
     const CANCEL_TICKET = [
         'name' => 'bolão_de_dezenas.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
     const MARK_AS_PAID_TICKET = [
         'name' => 'bolão_de_dezenas.pagar.bilhete',

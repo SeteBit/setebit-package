@@ -70,7 +70,7 @@ class SenaBrasilPermissions
     ];
     const CANCEL_TICKET = [
         'name' => 'sena_brasil.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
     const MARK_AS_PAID_TICKET = [
         'name' => 'sena_brasil.pagar.bilhete',
