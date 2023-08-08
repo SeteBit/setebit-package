@@ -58,7 +58,7 @@ class UserPermissions
     ];
 
     const LIST_CUSTOMER_SETTING = [
-        'name' => 'usuário.listar.cliente.comissão',
+        'name' => 'usuário.listar.cliente.configurações',
         'roles' => [self::ADMIN]
     ];
 
@@ -132,7 +132,7 @@ class UserPermissions
     ];
 
     const UPDATE_CUSTOMER_SETTING = [
-        'name' => 'usuário.atualizar.cliente.comissão',
+        'name' => 'usuário.atualizar.cliente.configurações',
         'roles' => [self::ADMIN]
     ];
 
