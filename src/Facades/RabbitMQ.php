@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static void sendMessage(string $message, string $queue = null)
  * @method static void consumeMessages(callable $callback, string $queue = null)
+ * @method static void sendMessageToExchange(string $message, string $exchange)
  */
 class RabbitMQ extends Facade
 {
