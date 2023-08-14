@@ -9,10 +9,17 @@ class SendTicketUpdatedWinnerMessage
 {
     public function handle(TicketUpdatedWinner $event): void
     {
+        info('Listener SendTicketUpdatedWinnerMessage handled.', ['ticket_id' => $event->ticket->id]);
+
         $ticket = $event->ticket;
         $original = $ticket->getOriginal();
 
         if ($ticket->situation === 'vencedor') {
+            info(
+                'Listener SendTicketUpdatedWinnerMessage sending message to RabbitMQ.',
+                ['ticket_id' => $event->ticket->id]
+            );
+
             if ($original['situation'] === 'vencedor') {
                 $value = $ticket->prize - $original['prize'];
             } else {
@@ -38,6 +45,13 @@ class SendTicketUpdatedWinnerMessage
             ];
 
             RabbitMQ::sendMessageToExchange(json_encode($payload), 'tickets');
+
+            info(
+                'Listener SendTicketUpdatedWinnerMessage sent message to RabbitMQ.',
+                ['ticket_id' => $event->ticket->id]
+            );
         }
+
+        info('Listener SendTicketUpdatedWinnerMessage finished.', ['ticket_id' => $event->ticket->id]);
     }
 }

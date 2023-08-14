@@ -15,5 +15,6 @@ class TicketCreated
     public function __construct(
         public Model|Builder $ticket,
     ) {
+        info('Event TicketCreated dispatched.', ['ticket_id' => $ticket->id]);
     }
 }

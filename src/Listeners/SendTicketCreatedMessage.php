@@ -9,9 +9,15 @@ class SendTicketCreatedMessage
 {
     public function handle(TicketCreated $event): void
     {
+        info('Listener SendTicketCreatedMessage handled.', ['ticket_id' => $event->ticket->id]);
         $ticket = $event->ticket;
 
         if (!in_array($ticket->situation, ['rascunho', 'aguardando pagamento'])) {
+            info(
+                'Listener SendTicketCreatedMessage sending message to RabbitMQ.',
+                ['ticket_id' => $event->ticket->id]
+            );
+
             $payload = [
                 'action' => 'created',
                 'ticket' => [
@@ -28,6 +34,10 @@ class SendTicketCreatedMessage
             ];
 
             RabbitMQ::sendMessageToExchange(json_encode($payload), 'tickets');
+
+            info('Listener SendTicketCreatedMessage sent message to RabbitMQ.', ['ticket_id' => $event->ticket->id]);
         }
+
+        info('Listener SendTicketCreatedMessage finished.', ['ticket_id' => $event->ticket->id]);
     }
 }
