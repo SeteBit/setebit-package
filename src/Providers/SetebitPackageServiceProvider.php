@@ -14,8 +14,8 @@ class SetebitPackageServiceProvider extends ServiceProvider
         app('router')->aliasMiddleware('auth-data', BindTheHeader::class);
 
         $this->publishes([
-            __DIR__ . '/../config/setebit-package.php' => config_path('setebit-package.php'),
-            __DIR__ . '/../database/migrations' => database_path('migrations')
+            __DIR__ . '/../../config/setebit-package.php' => config_path('setebit-package.php'),
+            __DIR__ . '/../../database/migrations' => database_path('migrations')
         ]);
     }
 
