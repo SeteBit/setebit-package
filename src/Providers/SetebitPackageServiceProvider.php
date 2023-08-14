@@ -21,7 +21,7 @@ class SetebitPackageServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/setebit-package.php', 'setebit-package');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/setebit-package.php', 'setebit-package');
 
         if ($this->app->runningInConsole()) {
             $this->commands([PrizedrawsConsume::class]);
