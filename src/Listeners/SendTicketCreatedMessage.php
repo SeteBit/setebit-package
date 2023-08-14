@@ -2,11 +2,10 @@
 
 namespace Setebit\Package\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Setebit\Package\Events\TicketCreated;
 use Setebit\Package\Facades\RabbitMQ;
 
-class SendTicketCreatedMessage implements ShouldQueue
+class SendTicketCreatedMessage
 {
     public function handle(TicketCreated $event): void
     {

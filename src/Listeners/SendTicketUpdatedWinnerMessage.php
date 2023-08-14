@@ -2,11 +2,10 @@
 
 namespace Setebit\Package\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Setebit\Package\Events\TicketUpdatedWinner;
 use Setebit\Package\Facades\RabbitMQ;
 
-class SendTicketUpdatedWinnerMessage implements ShouldQueue
+class SendTicketUpdatedWinnerMessage
 {
     public function handle(TicketUpdatedWinner $event): void
     {
