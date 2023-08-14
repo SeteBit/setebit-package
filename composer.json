@@ -51,7 +51,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Setebit\\Package\\SetebitPackageServiceProvider"
+                "Setebit\\Package\\Providers\\SetebitPackageServiceProvider",
+                "Setebit\\Package\\Providers\\SetebitPackageEventServiceProvider"
             ],
             "aliases": {
                 "AuthData": "Setebit\\Package\\Facades\\AuthData",

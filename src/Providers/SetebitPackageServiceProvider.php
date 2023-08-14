@@ -1,6 +1,6 @@
 <?php
 
-namespace Setebit\Package;
+namespace Setebit\Package\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Setebit\Package\Console\PrizedrawsConsume;
