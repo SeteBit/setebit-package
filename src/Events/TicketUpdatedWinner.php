@@ -14,6 +14,7 @@ class TicketUpdatedWinner
 
     public function __construct(
         public Model|Builder $ticket,
+        public array $original,
     ) {
         info('Event TicketUpdatedWinner dispatched.', ['ticket_id' => $ticket->id]);
     }

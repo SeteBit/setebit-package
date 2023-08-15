@@ -14,6 +14,7 @@ class TicketCanceled
 
     public function __construct(
         public Model|Builder $ticket,
+        public array $original,
     ) {
         info('Event TicketCanceled dispatched.', ['ticket_id' => $ticket->id]);
     }

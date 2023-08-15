@@ -12,7 +12,7 @@ class SendTicketCanceledMessage
         info('Listener SendTicketCanceledMessage handled.', ['ticket_id' => $event->ticket->id]);
 
         $ticket = $event->ticket;
-        $original = $ticket->getOriginal();
+        $original = $event->original;
 
         if ($ticket->situation === 'cancelado' && empty($original['canceled_at'])) {
             info(

@@ -12,7 +12,7 @@ class SendTicketUpdatedWinnerMessage
         info('Listener SendTicketUpdatedWinnerMessage handled.', ['ticket_id' => $event->ticket->id]);
 
         $ticket = $event->ticket;
-        $original = $ticket->getOriginal();
+        $original = $event->original;
 
         if ($ticket->situation === 'vencedor') {
             info(
