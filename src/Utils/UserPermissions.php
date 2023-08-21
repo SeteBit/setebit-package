@@ -11,7 +11,7 @@ class UserPermissions
     const OPERATOR = UserLevel::OPERATOR->value;
     const CUSTOMER = UserLevel::CUSTOMER->value;
 
-    public static string $bind = 'financeiro';
+    public static string $bind = 'usuário';
 
     /**
      * List
