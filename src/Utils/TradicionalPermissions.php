@@ -39,7 +39,7 @@ class TradicionalPermissions
     ];
     const LIST_QUOTATION = [
         'name' => 'tradicional.listar.cotação',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
+        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
     const LIST_SETTINGS = [
         'name' => 'tradicional.listar.configuração',
