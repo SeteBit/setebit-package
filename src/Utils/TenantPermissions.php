@@ -49,7 +49,7 @@ class TenantPermissions
 
     const LIST_TENANT_REGULATION = [
         'name' => 'banca.listar.regulamento',
-        'roles' => [self::ADMIN]
+        'roles' => [self::ADMIN, self::OPERATOR, self::CUSTOMER]
     ];
 
     const LIST_TENANT_PREFERENCES = [
