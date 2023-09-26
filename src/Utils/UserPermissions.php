@@ -42,6 +42,16 @@ class UserPermissions
         'roles' => [self::ADMIN, self::MANAGER]
     ];
 
+    const LIST_AFFILIATES = [
+        'name' => 'usuário.listar.afiliados',
+        'roles' => [self::ADMIN]
+    ];
+
+    const LIST_AFFILIATES_SOLICITATIONS = [
+        'name' => 'usuário.listar.solicitações_afiliados',
+        'roles' => [self::ADMIN]
+    ];
+
     const LIST_USER_GROUP = [
         'name' => 'usuário.listar.grupo',
         'roles' => [self::ADMIN]
@@ -156,6 +166,11 @@ class UserPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const UPDATE_AFFILIATE_SOLICITATION = [
+        'name' => 'usuário.atualizar.solicitação_afiliado',
+        'roles' => [self::ADMIN]
+    ];
+
 
     /**
      * Destroy
@@ -227,5 +242,10 @@ class UserPermissions
     const STORE_USER_GROUP = [
         'name' => 'usuário.criar.grupo',
         'roles' => [self::ADMIN]
+    ];
+
+    const STORE_AFFILIATE_SOLICITATION = [
+        'name' => 'usuário.criar.solicitação_afiliados',
+        'roles' => [self::CUSTOMER]
     ];
 }
