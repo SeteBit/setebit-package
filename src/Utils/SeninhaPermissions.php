@@ -31,6 +31,11 @@ class SeninhaPermissions
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
+    const LIST_DISCHARGE = [
+        'name' => 'seninha.listar.descarga',
+        'roles' => [self::ADMIN]
+    ];
+
     /**
      * Store
      */

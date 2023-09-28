@@ -30,6 +30,11 @@ class SenaBrasilPermissions
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
 
+    const LIST_DISCHARGE = [
+        'name' => 'sena_brasil.listar.descarga',
+        'roles' => [self::ADMIN]
+    ];
+
     /**
      * Store
      */
