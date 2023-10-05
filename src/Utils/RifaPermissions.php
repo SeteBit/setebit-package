@@ -29,10 +29,6 @@ class RifaPermissions
         'name' => 'rifa.listar.rifa',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
     ];
-    const LIST_TICKET = [
-        'name' => 'rifa.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     /**
      * Store
@@ -62,23 +58,6 @@ class RifaPermissions
     const UPDATE_RAFFLE = [
         'name' => 'rifa.atualizar.rifa',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => 'rifa.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => 'rifa.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'rifa.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**

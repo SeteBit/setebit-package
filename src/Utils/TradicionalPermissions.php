@@ -33,10 +33,6 @@ class TradicionalPermissions
         'name' => 'tradicional.listar.loteria',
         'roles' => [self::ADMIN, self::MANAGER]
     ];
-    const LIST_TICKET = [
-        'name' => 'tradicional.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
     const LIST_QUOTATION = [
         'name' => 'tradicional.listar.cotação',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
@@ -119,22 +115,5 @@ class TradicionalPermissions
     const STORE_RESULT = [
         'name' => 'tradicional.criar.resultado',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => 'tradicional.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => 'tradicional.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'tradicional.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 }

@@ -26,10 +26,6 @@ class SeninhaPermissions
         'name' => 'seninha.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_TICKET = [
-        'name' => 'seninha.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     const LIST_DISCHARGE = [
         'name' => 'seninha.listar.descarga',
@@ -64,22 +60,5 @@ class SeninhaPermissions
     const UPDATE_MODALITY = [
         'name' => 'seninha.atualizar.modalidade',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => 'seninha.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => 'seninha.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'seninha.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 }

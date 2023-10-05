@@ -25,10 +25,6 @@ class DoisQuinhentosPermissions
         'name' => '2_pra_500.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_TICKET = [
-        'name' => '2_pra_500.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     /**
      * Store
@@ -58,23 +54,6 @@ class DoisQuinhentosPermissions
     const UPDATE_TWOFIVEHUNDRED = [
         'name' => '2_pra_500.atualizar.2_pra_500',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => '2_pra_500.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => '2_pra_500.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => '2_pra_500.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**

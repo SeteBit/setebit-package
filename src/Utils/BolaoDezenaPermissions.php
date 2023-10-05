@@ -25,10 +25,6 @@ class BolaoDezenaPermissions
         'name' => 'bolão_de_dezenas.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_TICKET = [
-        'name' => 'bolão_de_dezenas.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     /**
      * Store
@@ -45,23 +41,6 @@ class BolaoDezenaPermissions
     const STORE_RESULT = [
         'name' => 'bolão_de_dezenas.criar.resultado',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => 'bolão_de_dezenas.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => 'bolão_de_dezenas.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'bolão_de_dezenas.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**

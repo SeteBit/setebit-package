@@ -25,10 +25,6 @@ class BolaoPermissions
         'name' => 'bolão.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_TICKET = [
-        'name' => 'bolão.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     /**
      * Store
@@ -58,23 +54,6 @@ class BolaoPermissions
     const UPDATE_BOLLON = [
         'name' => 'bolão.atualizar.bolão',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => 'bolão.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => 'bolão.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'bolão.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 
     /**

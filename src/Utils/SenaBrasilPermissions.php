@@ -25,10 +25,6 @@ class SenaBrasilPermissions
         'name' => 'sena_brasil.listar.auditoria',
         'roles' => [self::ADMIN]
     ];
-    const LIST_TICKET = [
-        'name' => 'sena_brasil.listar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
-    ];
 
     const LIST_DISCHARGE = [
         'name' => 'sena_brasil.listar.descarga',
@@ -63,22 +59,5 @@ class SenaBrasilPermissions
     const UPDATE_QUOTATION = [
         'name' => 'sena_brasil.atualizar.cotação',
         'roles' => [self::ADMIN]
-    ];
-
-    /**
-     * Ticket
-     */
-
-    const VALIDATE_TICKET = [
-        'name' => 'sena_brasil.validar.bilhete',
-        'roles' => [self::OPERATOR]
-    ];
-    const CANCEL_TICKET = [
-        'name' => 'sena_brasil.cancelar.bilhete',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
-    ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'sena_brasil.pagar.bilhete',
-        'roles' => [self::ADMIN, self::OPERATOR]
     ];
 }
