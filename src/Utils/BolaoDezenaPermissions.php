@@ -26,6 +26,11 @@ class BolaoDezenaPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const LIST_BOLLON = [
+        'name' => 'bolão_de_dezenas.listar.bolão_de_dezenas',
+        'roles' => [self::ADMIN]
+    ];
+
     /**
      * Store
      */
