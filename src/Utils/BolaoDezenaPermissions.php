@@ -48,6 +48,16 @@ class BolaoDezenaPermissions
         'roles' => [self::ADMIN]
     ];
 
+
+    /**
+     * Update
+     */
+
+    const UPDATE_BOLLON = [
+        'name' => 'bolão_de_dezenas.atualizar.bolão_de_dezenas',
+        'roles' => [self::ADMIN]
+    ];
+
     /**
      * Destroy
      */
