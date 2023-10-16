@@ -34,7 +34,7 @@ class TenantPermissions
 
     const LIST_TENANT_CONTACTS = [
         'name' => 'banca.listar.contatos',
-        'roles' => [self::CUSTOMER]
+        'roles' => [self::ADMIN, self::CUSTOMER, self::OPERATOR]
     ];
 
     const LIST_TENANT_MODULES = [
