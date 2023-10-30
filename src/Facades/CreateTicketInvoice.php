@@ -7,7 +7,7 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static PromiseInterface|Response handle(int $userId, array $data)
+ * @method static PromiseInterface|Response handle(array $data)
  */
 class CreateTicketInvoice extends Facade
 {
