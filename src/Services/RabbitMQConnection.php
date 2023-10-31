@@ -40,7 +40,7 @@ class RabbitMQConnection
         );
     }
 
-    public function sendMessage(string $content, string $queue = null): void
+    public function sendMessage(string $content, string $queue = null, bool $closeConnection = true): void
     {
         if (!$this->channel->is_open()) {
             $this->openChannel();
@@ -54,10 +54,12 @@ class RabbitMQConnection
             $queue ?? $this->queue
         );
 
-        $this->closeConnection();
+        if ($closeConnection) {
+            $this->closeConnection();
+        }
     }
 
-    public function sendMessageToExchange(string $content, string $exchange): void
+    public function sendMessageToExchange(string $content, string $exchange, bool $closeConnection = true): void
     {
         if (!$this->channel->is_open()) {
             $this->openChannel();
@@ -70,7 +72,9 @@ class RabbitMQConnection
             $exchange
         );
 
-        $this->closeConnection();
+        if ($closeConnection) {
+            $this->closeConnection();
+        }
     }
 
     public function consumeMessages(callable $callback, string $queue = null, int $timeout = 60): void
