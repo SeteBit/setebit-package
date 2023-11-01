@@ -21,13 +21,13 @@ class RifaPermissions
         'name' => 'rifa.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => 'rifa.listar.auditoria',
+    const LIST_CAMPAIGN = [
+        'name' => 'rifa.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_RAFFLE = [
-        'name' => 'rifa.listar.rifa',
-        'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR, self::CUSTOMER]
+    const LIST_RANKING_CAMPAIGN = [
+        'name' => 'rifa.listar',
+        'roles' => [self::ADMIN]
     ];
 
     /**
@@ -38,12 +38,12 @@ class RifaPermissions
         'name' => 'rifa.criar',
         'roles' => [self::ADMIN]
     ];
-    const STORE_RAFFLE = [
-        'name' => 'rifa.criar.rifa',
+    const STORE_CAMPAIGN = [
+        'name' => 'rifa.criar',
         'roles' => [self::ADMIN]
     ];
     const STORE_RESULT = [
-        'name' => 'rifa.criar.resultado',
+        'name' => 'rifa.criar',
         'roles' => [self::ADMIN]
     ];
 
@@ -55,21 +55,12 @@ class RifaPermissions
         'name' => 'rifa.atualizar',
         'roles' => [self::ADMIN]
     ];
-    const UPDATE_RAFFLE = [
-        'name' => 'rifa.atualizar.rifa',
+    const UPDATE_CAMPAIGN = [
+        'name' => 'rifa.atualizar',
         'roles' => [self::ADMIN]
     ];
-
-    /**
-     * Destroy
-     */
-
-    const DESTROY_BIND = [
-        'name' => 'rifa.apagar',
-        'roles' => [self::ADMIN]
-    ];
-    const DESTROY_RAFFLE = [
-        'name' => 'rifa.apagar.rifa',
+    const UPDATE_STATUS_CAMPAIGN = [
+        'name' => 'rifa.atualizar',
         'roles' => [self::ADMIN]
     ];
 }
