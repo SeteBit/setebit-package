@@ -22,11 +22,11 @@ class RifaPermissions
         'roles' => [self::ADMIN]
     ];
     const LIST_CAMPAIGN = [
-        'name' => 'rifa.listar',
+        'name' => 'rifa.listar.campanha',
         'roles' => [self::ADMIN]
     ];
     const LIST_RANKING_CAMPAIGN = [
-        'name' => 'rifa.listar',
+        'name' => 'rifa.listar.campanha.ranking',
         'roles' => [self::ADMIN]
     ];
 
@@ -39,11 +39,11 @@ class RifaPermissions
         'roles' => [self::ADMIN]
     ];
     const STORE_CAMPAIGN = [
-        'name' => 'rifa.criar',
+        'name' => 'rifa.criar.campanha',
         'roles' => [self::ADMIN]
     ];
     const STORE_RESULT = [
-        'name' => 'rifa.criar',
+        'name' => 'rifa.criar.resultado',
         'roles' => [self::ADMIN]
     ];
 
@@ -56,11 +56,11 @@ class RifaPermissions
         'roles' => [self::ADMIN]
     ];
     const UPDATE_CAMPAIGN = [
-        'name' => 'rifa.atualizar',
+        'name' => 'rifa.atualizar.campanha',
         'roles' => [self::ADMIN]
     ];
     const UPDATE_STATUS_CAMPAIGN = [
-        'name' => 'rifa.atualizar',
+        'name' => 'rifa.atualizar.campanha.status',
         'roles' => [self::ADMIN]
     ];
 }
