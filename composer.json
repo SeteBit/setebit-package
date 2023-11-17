@@ -56,7 +56,8 @@
             ],
             "aliases": {
                 "AuthData": "Setebit\\Package\\Facades\\AuthData",
-                "UpdateBalance": "Setebit\\Package\\UpdateBalance"
+                "UpdateBalance": "Setebit\\Package\\UpdateBalance",
+                "RedisPrizedraw": "Setebit\\Package\\Services\\RedisPrizedraw"
             }
         }
     }
