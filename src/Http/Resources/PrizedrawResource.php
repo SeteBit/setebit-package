@@ -12,7 +12,6 @@ class PrizedrawResource extends JsonResource
     {
         return [
             'quantity_numbers' => $this->quantity_numbers,
-            'code' => RedisPrizedraw::getUniquePrizedrawNumber($this->external_prizedraw_id),
             'award' => $this->award_name,
             'description' => $this->description,
             'draw_at' => $this->draw_at,
