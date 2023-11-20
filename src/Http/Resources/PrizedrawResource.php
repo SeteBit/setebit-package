@@ -10,11 +10,13 @@ class PrizedrawResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
+        $prizedraw = $this->resource;
+
         return [
-            'quantity_numbers' => $this->quantity_numbers,
-            'award' => $this->award_name,
-            'description' => $this->description,
-            'draw_at' => $this->draw_at,
+            'quantity_numbers' => $prizedraw->quantity_numbers,
+            'award' => $prizedraw->award_name,
+            'description' => $prizedraw->description,
+            'draw_at' => $prizedraw->draw_at,
         ];
     }
 }
