@@ -9,14 +9,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('prizedraws', function (Blueprint $table) {
-            $table->integer('quantity_numbers');
+            $table->integer('quantity_numbers')->default(0);
         });
     }
 
     public function down(): void
     {
         Schema::table('prizedraws', function (Blueprint $table) {
-            $table->dropColumn('quantity_numbers');
+            $table->dropColumn('quantity_numbers')->default(0);
         });
     }
 };
