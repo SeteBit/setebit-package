@@ -74,10 +74,6 @@ class TradicionalPermissions
         'name' => 'tradicional.atualizar.cotação',
         'roles' => [self::ADMIN]
     ];
-    const UPDATE_INSTANT_LOTTERY_FINANCIAL = [
-        'name' => 'tradicional.atualizar.caixa_loteria_instantânea',
-        'roles' => [self::ADMIN]
-    ];
 
     /**
      * Destroy

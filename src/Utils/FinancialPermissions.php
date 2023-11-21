@@ -24,7 +24,7 @@ class FinancialPermissions
 
     const LIST_FINANCIAL_ENTRY = [
         'name' => 'financeiro.listar.lançamento',
-        'roles' => [self::ADMIN]
+        'roles' => [self::ADMIN, self::MANAGER]
     ];
 
     const LIST_DISCHARGE = [
@@ -57,7 +57,7 @@ class FinancialPermissions
 
     const DESTROY_FINANCIAL_ENTRY = [
         'name' => 'financeiro.apagar.lançamento',
-        'roles' => [self::ADMIN]
+        'roles' => [self::ADMIN, self::MANAGER]
     ];
 
 
@@ -72,6 +72,6 @@ class FinancialPermissions
 
     const STORE_FINANCIAL_ENTRY = [
         'name' => 'financeiro.criar.lançamento',
-        'roles' => [self::ADMIN]
+        'roles' => [self::ADMIN, self::MANAGER]
     ];
 }
