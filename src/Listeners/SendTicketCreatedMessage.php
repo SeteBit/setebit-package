@@ -30,7 +30,14 @@ class SendTicketCreatedMessage
                     'commission' => $ticket->commission,
                     'prize' => $ticket->prize,
                     'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
-                        ? $ticket->ticketPrizedraws
+                        ? $ticket->ticketPrizedraws->map(function ($ticketPrizedraw) {
+                            return [
+                                'number' => $ticketPrizedraw->number,
+                                'prizedraw' => [
+                                    'id' => $ticketPrizedraw->prizedraw->external_prizedraw_id
+                                ],
+                            ];
+                        })
                         : null,
                     'created_at' => $ticket->created_at,
                 ],
