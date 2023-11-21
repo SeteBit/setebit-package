@@ -29,6 +29,9 @@ class SendTicketCreatedMessage
                     'value' => $ticket->value,
                     'commission' => $ticket->commission,
                     'prize' => $ticket->prize,
+                    'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
+                        ? $ticket->ticketPrizedraws
+                        : null,
                     'created_at' => $ticket->created_at,
                 ],
             ];

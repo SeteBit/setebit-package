@@ -40,6 +40,9 @@ class SendTicketUpdatedWinnerMessage
                     'tenant_id' => $ticket->tenant_id,
                     'value' => $ticket->value,
                     'prize' => $value,
+                    'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
+                        ? $ticket->ticketPrizedraws
+                        : null,
                     'created_at' => $ticket->created_at,
                 ],
             ];
