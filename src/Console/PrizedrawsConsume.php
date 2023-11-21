@@ -10,8 +10,8 @@ class PrizedrawsConsume extends Command
     protected $signature = 'prizedraws:consume';
     protected $description = 'Command to consume prizedraws queue';
 
-    public function handle(): void
+    public function handle(PrizedrawsQueueWorker $prizedrawsQueueWorker): void
     {
-        (new PrizedrawsQueueWorker())->run();
+        $prizedrawsQueueWorker->run();
     }
 }
