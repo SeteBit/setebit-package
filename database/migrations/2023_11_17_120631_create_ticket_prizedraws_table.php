@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->timestamps();
             $table->unsignedBigInteger('ticket_id');
             $table->unsignedBigInteger('prizedraw_id');
-            $table->string('number');
+            $table->string('number')->nullable();
         });
     }
 
