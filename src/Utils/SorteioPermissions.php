@@ -14,6 +14,11 @@ class SorteioPermissions
      * List
      */
 
+    const LIST_AUDIT = [
+        'name' => 'sorteio.listar.auditoria',
+        'roles' => [self::ADMIN]
+    ];
+
     const LIST_BIND = [
         'name' => 'sorteio.listar',
         'roles' => [self::ADMIN]
@@ -41,6 +46,10 @@ class SorteioPermissions
     ];
     const STORE_AWARD = [
         'name' => 'sorteio.criar.prêmio',
+        'roles' => [self::ADMIN]
+    ];
+    const STORE_RESULT = [
+        'name' => 'sorteio.criar.resultado',
         'roles' => [self::ADMIN]
     ];
 
