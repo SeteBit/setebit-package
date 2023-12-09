@@ -59,8 +59,12 @@ class RabbitMQConnection
         }
     }
 
-    public function sendMessageToExchange(string $content, string $exchange, bool $closeConnection = true): void
-    {
+    public function sendMessageToExchange(
+        string $content,
+        string $exchange,
+        bool $closeConnection = true,
+        string $routingKey = ''
+    ): void {
         if (!$this->channel->is_open()) {
             $this->openChannel();
         }
@@ -69,7 +73,8 @@ class RabbitMQConnection
 
         $this->channel->basic_publish(
             $message,
-            $exchange
+            $exchange,
+            $routingKey
         );
 
         if ($closeConnection) {
