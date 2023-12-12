@@ -4,11 +4,12 @@ namespace Setebit\Package\Providers;
 
 use Setebit\Package\Events\TicketCanceled;
 use Setebit\Package\Events\TicketCreated;
-use Setebit\Package\Events\TicketUpdatedWinner;
+use Setebit\Package\Events\TicketResultAdded;
 use Setebit\Package\Listeners\SendTicketCanceledMessage;
 use Setebit\Package\Listeners\SendTicketCreatedMessage;
-use Setebit\Package\Listeners\SendTicketUpdatedWinnerMessage;
+use Setebit\Package\Listeners\SendTicketWinnerMessage;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Setebit\Package\Listeners\SendTicketWinnerToLoserMessage;
 
 class SetebitPackageEventServiceProvider extends ServiceProvider
 {
@@ -19,8 +20,9 @@ class SetebitPackageEventServiceProvider extends ServiceProvider
         TicketCanceled::class => [
             SendTicketCanceledMessage::class,
         ],
-        TicketUpdatedWinner::class => [
-            SendTicketUpdatedWinnerMessage::class,
+        TicketResultAdded::class => [
+            SendTicketWinnerMessage::class,
+            SendTicketWinnerToLoserMessage::class,
         ],
     ];
 }

@@ -2,24 +2,29 @@
 
 namespace Setebit\Package\Listeners;
 
-use Setebit\Package\Events\TicketCreated;
+use Setebit\Package\Events\TicketResultAdded;
 use Setebit\Package\Facades\RabbitMQ;
 
-class SendTicketCreatedMessage
+class SendTicketWinnerToLoserMessage
 {
-    public function handle(TicketCreated $event): void
+    public function handle(TicketResultAdded $event): void
     {
-        info('Listener SendTicketCreatedMessage handled.', ['ticket_id' => $event->ticket->id]);
-        $ticket = $event->ticket;
+        info('Listener SendTicketWinnerToLoserMessage handled.', ['ticket_id' => $event->ticket->id]);
 
-        if (!in_array($ticket->situation, ['rascunho', 'aguardando pagamento'])) {
+        /**
+         * @var  $ticket
+         */
+        $ticket = $event->ticket;
+        $original = $event->original;
+
+        if ($original['situation'] === 'vencedor' && $ticket->situation === 'perdedor') {
             info(
-                'Listener SendTicketCreatedMessage sending message to RabbitMQ.',
+                'Listener SendTicketWinnerToLoserMessage sending message to RabbitMQ.',
                 ['ticket_id' => $event->ticket->id]
             );
 
             $payload = [
-                'action' => 'created',
+                'action' => 'winner_to_loser',
                 'ticket' => [
                     'id' => $ticket->id,
                     'user_id' => $ticket->user_id,
@@ -27,8 +32,8 @@ class SendTicketCreatedMessage
                     'situation' => $ticket->situation,
                     'tenant_id' => $ticket->tenant_id,
                     'value' => $ticket->value,
-                    'commission' => $ticket->commission,
-                    'prize' => $ticket->prize,
+                    'prize' => $original['prize'],
+                    'used_bonus' => $ticket->used_bonus ?? false,
                     'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
                         ? $ticket->ticketPrizedraws->map(function ($ticketPrizedraw) {
                             return [
@@ -43,11 +48,18 @@ class SendTicketCreatedMessage
                 ],
             ];
 
-            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets');
+            RabbitMQ::sendMessageToExchange(
+                message: json_encode($payload),
+                exchange: 'tickets',
+                routingKey: 'ticket.winner_loser'
+            );
 
-            info('Listener SendTicketCreatedMessage sent message to RabbitMQ.', ['ticket_id' => $event->ticket->id]);
+            info(
+                'Listener SendTicketWinnerToLoserMessage sent message to RabbitMQ.',
+                ['ticket_id' => $event->ticket->id]
+            );
         }
 
-        info('Listener SendTicketCreatedMessage finished.', ['ticket_id' => $event->ticket->id]);
+        info('Listener SendTicketWinnerToLoserMessage finished.', ['ticket_id' => $event->ticket->id]);
     }
 }
