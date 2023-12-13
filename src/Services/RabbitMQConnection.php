@@ -2,8 +2,10 @@
 
 namespace Setebit\Package\Services;
 
+use Illuminate\Support\Facades\Log;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Exception\AMQPTimeoutException;
 use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitMQConnection
@@ -42,20 +44,30 @@ class RabbitMQConnection
 
     public function sendMessage(string $message, string $queue = null, bool $closeConnection = true): void
     {
-        if (!$this->channel->is_open()) {
-            $this->openChannel();
-        }
+        try {
+            if (!$this->channel->is_open()) {
+                $this->openChannel();
+            }
 
-        $message = new AMQPMessage($message);
+            $message = new AMQPMessage($message);
 
-        $this->channel->basic_publish(
-            $message,
-            '',
-            $queue ?? $this->queue
-        );
+            $this->channel->basic_publish(
+                $message,
+                '',
+                $queue ?? $this->queue
+            );
 
-        if ($closeConnection) {
-            $this->closeConnection();
+            if ($closeConnection) {
+                $this->closeConnection();
+            }
+        } catch (\Throwable $e) {
+            Log::critical('sendMessage :: Error sending message to RabbitMQ', [
+                'payload' => $message,
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString(),
+            ]);
         }
     }
 
@@ -66,22 +78,32 @@ class RabbitMQConnection
         string $routingKey = '',
         string $type = 'fanout'
     ): void {
-        if (!$this->channel->is_open()) {
-            $this->openChannel();
-        }
+        try {
+            if (!$this->channel->is_open()) {
+                $this->openChannel();
+            }
 
-        $this->channel->exchange_declare($exchange, $type, false, true, false);
+            $this->channel->exchange_declare($exchange, $type, false, true, false);
 
-        $message = new AMQPMessage($message);
+            $message = new AMQPMessage($message);
 
-        $this->channel->basic_publish(
-            $message,
-            $exchange,
-            $routingKey
-        );
+            $this->channel->basic_publish(
+                $message,
+                $exchange,
+                $routingKey
+            );
 
-        if ($closeConnection) {
-            $this->closeConnection();
+            if ($closeConnection) {
+                $this->closeConnection();
+            }
+        } catch (\Throwable $e) {
+            Log::critical('sendMessageToExchange :: Error sending message to RabbitMQ', [
+                'payload' => $message,
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString(),
+            ]);
         }
     }
 
@@ -101,8 +123,15 @@ class RabbitMQConnection
             while ($this->channel->is_consuming()) {
                 $this->channel->wait(null, false, $timeout);
             }
-        } catch (\PhpAmqpLib\Exception\AMQPTimeoutException) {
+        } catch (AMQPTimeoutException) {
             $this->closeConnection();
+        } catch (\Throwable $e) {
+            Log::critical('consumeMessages :: Error consuming messages from RabbitMQ', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString(),
+            ]);
         }
     }
 
