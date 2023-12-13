@@ -63,11 +63,14 @@ class RabbitMQConnection
         string $message,
         string $exchange,
         bool $closeConnection = true,
-        string $routingKey = ''
+        string $routingKey = '',
+        string $type = 'fanout'
     ): void {
         if (!$this->channel->is_open()) {
             $this->openChannel();
         }
+
+        $this->channel->exchange_declare($exchange, $type, false, true, false);
 
         $message = new AMQPMessage($message);
 
