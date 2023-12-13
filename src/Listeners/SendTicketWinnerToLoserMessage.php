@@ -11,9 +11,6 @@ class SendTicketWinnerToLoserMessage
     {
         info('Listener SendTicketWinnerToLoserMessage handled.', ['ticket_id' => $event->ticket->id]);
 
-        /**
-         * @var  $ticket
-         */
         $ticket = $event->ticket;
         $original = $event->original;
 
