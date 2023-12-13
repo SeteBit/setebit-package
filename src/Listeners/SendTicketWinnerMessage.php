@@ -16,7 +16,7 @@ class SendTicketWinnerMessage
 
         if (
             $ticket->situation === 'vencedor' &&
-            !($ticket->situation === 'vencedor' && $original['situation'] === 'perdedor')
+            !($original['situation'] === 'vencedor' && $ticket->situation === 'perdedor')
         ) {
             info(
                 'Listener SendTicketWinnerMessage sending message to RabbitMQ.',
