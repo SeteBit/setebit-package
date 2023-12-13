@@ -61,7 +61,8 @@ class SendTicketWinnerMessage
             RabbitMQ::sendMessageToExchange(
                 message: json_encode($payload),
                 exchange: 'tickets',
-                routingKey: 'ticket.winner_loser'
+                routingKey: 'ticket.winner_loser',
+                type: 'topic'
             );
 
             info(

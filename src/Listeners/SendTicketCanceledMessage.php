@@ -35,7 +35,7 @@ class SendTicketCanceledMessage
                 ],
             ];
 
-            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets');
+            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets', type: 'topic');
 
             info('Listener SendTicketCanceledMessage sent message to RabbitMQ.', ['ticket_id' => $event->ticket->id]);
         }

@@ -43,7 +43,7 @@ class SendTicketCreatedMessage
                 ],
             ];
 
-            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets');
+            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets', type: 'topic');
 
             info('Listener SendTicketCreatedMessage sent message to RabbitMQ.', ['ticket_id' => $event->ticket->id]);
         }
