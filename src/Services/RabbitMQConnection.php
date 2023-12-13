@@ -40,13 +40,13 @@ class RabbitMQConnection
         );
     }
 
-    public function sendMessage(string $content, string $queue = null, bool $closeConnection = true): void
+    public function sendMessage(string $message, string $queue = null, bool $closeConnection = true): void
     {
         if (!$this->channel->is_open()) {
             $this->openChannel();
         }
 
-        $message = new AMQPMessage($content);
+        $message = new AMQPMessage($message);
 
         $this->channel->basic_publish(
             $message,
@@ -60,7 +60,7 @@ class RabbitMQConnection
     }
 
     public function sendMessageToExchange(
-        string $content,
+        string $message,
         string $exchange,
         bool $closeConnection = true,
         string $routingKey = ''
@@ -69,7 +69,7 @@ class RabbitMQConnection
             $this->openChannel();
         }
 
-        $message = new AMQPMessage($content);
+        $message = new AMQPMessage($message);
 
         $this->channel->basic_publish(
             $message,
