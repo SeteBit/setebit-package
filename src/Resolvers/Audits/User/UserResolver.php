@@ -6,7 +6,7 @@ use Setebit\Package\Resolvers\Audits\User\UserAuthenticable;
 
 class UserResolver implements \OwenIt\Auditing\Contracts\UserResolver
 {
-    public static function resolve(): UserAuthenticable
+    public static function resolve(\OwenIt\Auditing\Contracts\Auditable $auditable): UserAuthenticable
     {
         return new UserAuthenticable();
     }
