@@ -171,6 +171,11 @@ class UserPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const UPDATE_WITHDRAW_SOLICITATION = [
+        'name' => 'usuário.atualizar.solicitação_saque',
+        'roles' => [self::ADMIN]
+    ];
+
 
     /**
      * Destroy
