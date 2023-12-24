@@ -42,6 +42,19 @@ class RabbitMQConnection
         );
     }
 
+    private function declareQueue(string $queueName): void
+    {
+        if (!empty($queueName)) {
+            $this->channel->queue_declare(
+                $queueName,
+                true,
+                false,
+                false,
+                false
+            );
+        }
+    }
+
     public function sendMessage(string $message, string $queue = null, bool $closeConnection = true): void
     {
         try {
@@ -49,12 +62,15 @@ class RabbitMQConnection
                 $this->openChannel();
             }
 
+            $queue = $queue ?? $this->queue;
+            $this->declareQueue($queue);
+
             $message = new AMQPMessage($message);
 
             $this->channel->basic_publish(
                 $message,
                 '',
-                $queue ?? $this->queue
+                $queue
             );
 
             if ($closeConnection) {
@@ -109,17 +125,24 @@ class RabbitMQConnection
 
     public function consumeMessages(callable $callback, string $queue = null, int $timeout = 60): void
     {
-        $this->channel->basic_consume(
-            $queue ?? $this->queue,
-            '',
-            false,
-            false,
-            false,
-            false,
-            $callback
-        );
-
         try {
+            if (!$this->channel->is_open()) {
+                $this->openChannel();
+            }
+
+            $queue = $queue ?? $this->queue;
+            $this->declareQueue($queue);
+
+            $this->channel->basic_consume(
+                $queue,
+                '',
+                false,
+                false,
+                false,
+                false,
+                $callback
+            );
+
             while ($this->channel->is_consuming()) {
                 $this->channel->wait(null, false, $timeout);
             }
