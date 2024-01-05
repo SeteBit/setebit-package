@@ -13,6 +13,7 @@ return [
     'url_api_gateway' => env('URL_API_GATEWAY', 'https://api.teste.bet:8443'),
     'url_storage' => env('URL_STORAGE', 'https://storage.teste.bet'),
     'tenant_cache_duration_minutes' => env('TENANT_CACHE_DURATION_MINUTES', 2),
+    'tenant_token' => env('TENANT_TOKEN'),
 
     'rabbitMQ' => [
         'user' => env('RABBITMQ_USER', 'guest'),
