@@ -22,10 +22,6 @@ class SeninhaPermissions
         'name' => 'seninha.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => 'seninha.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
 
     const LIST_DISCHARGE = [
         'name' => 'seninha.listar.descarga',

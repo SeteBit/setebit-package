@@ -21,10 +21,6 @@ class TradicionalPermissions
         'name' => 'tradicional.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => 'tradicional.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
     const LIST_EXTRACTION = [
         'name' => 'tradicional.listar.extração',
         'roles' => [self::ADMIN, self::MANAGER]

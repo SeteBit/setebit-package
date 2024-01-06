@@ -21,10 +21,6 @@ class SenaBrasilPermissions
         'name' => 'sena_brasil.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => 'sena_brasil.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
 
     const LIST_DISCHARGE = [
         'name' => 'sena_brasil.listar.descarga',

@@ -21,10 +21,6 @@ class BolaoDezenaPermissions
         'name' => 'bolão_de_dezenas.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => 'bolão_de_dezenas.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
 
     const LIST_BOLLON = [
         'name' => 'bolão_de_dezenas.listar.bolão_de_dezenas',

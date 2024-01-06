@@ -21,10 +21,6 @@ class DoisQuinhentosPermissions
         'name' => '2_pra_500.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => '2_pra_500.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
 
     /**
      * Store

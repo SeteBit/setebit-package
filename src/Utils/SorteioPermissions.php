@@ -14,11 +14,6 @@ class SorteioPermissions
      * List
      */
 
-    const LIST_AUDIT = [
-        'name' => 'sorteio.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
-
     const LIST_BIND = [
         'name' => 'sorteio.listar',
         'roles' => [self::ADMIN]

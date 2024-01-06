@@ -21,10 +21,6 @@ class BolaoPermissions
         'name' => 'bolão.listar',
         'roles' => [self::ADMIN]
     ];
-    const LIST_AUDIT = [
-        'name' => 'bolão.listar.auditoria',
-        'roles' => [self::ADMIN]
-    ];
 
     /**
      * Store
