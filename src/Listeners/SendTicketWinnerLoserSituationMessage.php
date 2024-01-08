@@ -14,11 +14,12 @@ class SendTicketWinnerLoserSituationMessage
         $ticket = $event->ticket;
         $original = $event->original;
         $situation = $this->resolveSituation($ticket->situation);
+        $situationOriginal = $this->resolveSituation($original['situation']);
 
         if ($situation === 'vencedor') {
             $action = 'winner';
             $prize = ($original['situation'] === 'vencedor') ? $ticket->prize - $original['prize'] : $ticket->prize;
-        } elseif ($original['situation'] === 'vencedor' && $situation === 'perdedor') {
+        } elseif ($situationOriginal === 'vencedor' && $situation === 'perdedor') {
             $action = 'winner_to_loser';
             $prize = $original['prize'];
         } else {
