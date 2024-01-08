@@ -32,27 +32,6 @@ class RabbitMQConnection
         );
 
         $this->channel = $this->connection->channel();
-
-        $this->channel->queue_declare(
-            $this->queue,
-            true,
-            false,
-            false,
-            false
-        );
-    }
-
-    private function declareQueue(string $queueName): void
-    {
-        if (!empty($queueName)) {
-            $this->channel->queue_declare(
-                $queueName,
-                true,
-                false,
-                false,
-                false
-            );
-        }
     }
 
     public function sendMessage(string $message, string $queue = null, bool $closeConnection = true): void
@@ -155,6 +134,19 @@ class RabbitMQConnection
                 'line' => $e->getLine(),
                 'trace' => $e->getTraceAsString(),
             ]);
+        }
+    }
+
+    private function declareQueue(string $queueName): void
+    {
+        if (!empty($queueName)) {
+            $this->channel->queue_declare(
+                $queueName,
+                true,
+                false,
+                false,
+                false
+            );
         }
     }
 
