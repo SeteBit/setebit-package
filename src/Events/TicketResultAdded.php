@@ -15,6 +15,7 @@ class TicketResultAdded
     public function __construct(
         public Model|Builder $ticket,
         public array $original,
+        public bool $updateBalance = true,
     ) {
         info('Event TicketResultAdded dispatched.', ['ticket_id' => $ticket->id]);
     }
