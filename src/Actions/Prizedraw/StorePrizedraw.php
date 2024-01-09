@@ -6,12 +6,8 @@ use Setebit\Package\Models\Prizedraw;
 
 class StorePrizedraw
 {
-    public function handle(array $data): Prizedraw
+    public function handle(array $data): void
     {
-        $prizedraw = Prizedraw::withoutEvents(function () use ($data) {
-            return Prizedraw::create($data);
-        });
-
-        return $prizedraw;
+        Prizedraw::withoutEvents(fn() => Prizedraw::create($data));
     }
 }

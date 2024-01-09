@@ -41,16 +41,6 @@ class SendTicketWinnerLoserSituationMessage
                 'value' => $ticket->value,
                 'prize' => $prize,
                 'used_bonus' => $ticket->used_bonus ?? false,
-                'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
-                    ? $ticket->ticketPrizedraws->map(function ($ticketPrizedraw) {
-                        return [
-                            'number' => $ticketPrizedraw->number,
-                            'prizedraw' => [
-                                'id' => $ticketPrizedraw->prizedraw->external_prizedraw_id
-                            ],
-                        ];
-                    })
-                    : null,
                 'created_at' => $ticket->created_at,
             ],
         ];

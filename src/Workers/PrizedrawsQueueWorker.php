@@ -8,8 +8,15 @@ use Setebit\Package\Actions\Prizedraw\CancelPrizedraw;
 use Setebit\Package\Facades\RabbitMQ;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class PrizedrawsQueueWorker
+readonly class PrizedrawsQueueWorker
 {
+    public function __construct(
+        private StorePrizedraw $storePrizedraw,
+        private UpdatePrizedraw $updatePrizedraw,
+        private CancelPrizedraw $cancelPrizedraw,
+    ) {
+    }
+
     public function run(): void
     {
         RabbitMQ::consumeMessages(function (AMQPMessage $message) {
@@ -20,9 +27,10 @@ class PrizedrawsQueueWorker
             $externalId = $prizedraw['external_prizedraw_id'];
 
             match ($action) {
-                'created' => (new StorePrizedraw())->handle($prizedraw),
-                'updated' => (new UpdatePrizedraw())->handle($externalId, $prizedraw),
-                'canceled' => (new CancelPrizedraw())->handle($externalId)
+                'created' => $this->storePrizedraw->handle($prizedraw),
+                'updated' => $this->updatePrizedraw->handle($externalId, $prizedraw),
+                'canceled' => $this->cancelPrizedraw->handle($externalId),
+                default => $message->ack(),
             };
 
             $message->ack();
