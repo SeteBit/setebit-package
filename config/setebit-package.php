@@ -21,6 +21,5 @@ return [
         'host' => env('RABBITMQ_HOST', 'localhost'),
         'port' => env('RABBITMQ_PORT', 5672),
         'vhost' => env('RABBITMQ_VHOST', '/'),
-        'queue' => env('RABBITMQ_QUEUE', 'default'),
     ]
 ];

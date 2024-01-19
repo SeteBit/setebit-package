@@ -3,7 +3,7 @@
 namespace Setebit\Package\Listeners;
 
 use Setebit\Package\Events\TicketCreated;
-use Setebit\Package\Facades\RabbitMQ;
+use Setebit\Package\Jobs\SendMessageRabbitMQ;
 
 class SendTicketCreatedMessage
 {
@@ -43,7 +43,12 @@ class SendTicketCreatedMessage
                 ],
             ];
 
-            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets', type: 'topic');
+            SendMessageRabbitMQ::dispatch(
+                message: json_encode($payload),
+                target: '',
+                exchange: 'tickets',
+                typeExchange: 'topic'
+            );
 
             info('Listener SendTicketCreatedMessage sent message to RabbitMQ.', ['ticket_id' => $event->ticket->id]);
         }

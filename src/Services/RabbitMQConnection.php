@@ -7,6 +7,7 @@ use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exception\AMQPTimeoutException;
 use PhpAmqpLib\Message\AMQPMessage;
+use Throwable;
 
 class RabbitMQConnection
 {
@@ -16,7 +17,6 @@ class RabbitMQConnection
     private int $port;
     private string $user;
     private string $pass;
-    private string $queue;
     private string $vhost;
 
     public function __construct()
@@ -34,83 +34,55 @@ class RabbitMQConnection
         $this->channel = $this->connection->channel();
     }
 
-    public function sendMessage(string $message, string $queue = null, bool $closeConnection = true): void
-    {
-        try {
-            if (!$this->channel->is_open()) {
-                $this->openChannel();
-            }
-
-            $queue = $queue ?? $this->queue;
-            $this->declareQueue($queue);
-
-            $message = new AMQPMessage($message);
-
-            $this->channel->basic_publish(
-                $message,
-                '',
-                $queue
-            );
-
-            if ($closeConnection) {
-                $this->closeConnection();
-            }
-        } catch (\Throwable $e) {
-            Log::critical('sendMessage :: Error sending message to RabbitMQ', [
-                'payload' => $message,
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-                'trace' => $e->getTraceAsString(),
-            ]);
-        }
-    }
-
-    public function sendMessageToExchange(
+    /**
+     * @throws Throwable
+     */
+    public function sendMessage(
         string $message,
-        string $exchange,
-        bool $closeConnection = true,
-        string $routingKey = '',
-        string $type = 'fanout'
+        string $target,
+        string $exchange = '',
+        string $typeExchange = 'fanout',
+        bool $closeConnection = true
     ): void {
         try {
             if (!$this->channel->is_open()) {
                 $this->openChannel();
             }
 
-            $this->channel->exchange_declare($exchange, $type, false, true, false);
-
             $message = new AMQPMessage($message);
 
-            $this->channel->basic_publish(
-                $message,
-                $exchange,
-                $routingKey
-            );
+            if (!empty($exchange)) {
+                $this->channel->exchange_declare($exchange, $typeExchange, false, true, false);
+                $this->channel->basic_publish($message, $exchange, $target);
+            } else {
+                $this->channel->queue_declare($target, true, false, false, false);
+                $this->channel->basic_publish($message, '', $target);
+            }
 
             if ($closeConnection) {
                 $this->closeConnection();
             }
-        } catch (\Throwable $e) {
-            Log::critical('sendMessageToExchange :: Error sending message to RabbitMQ', [
+        } catch (Throwable $e) {
+            Log::critical(self::class . ' :: Error sending message to RabbitMQ', [
                 'payload' => $message,
                 'message' => $e->getMessage(),
                 'file' => $e->getFile(),
                 'line' => $e->getLine(),
                 'trace' => $e->getTraceAsString(),
             ]);
+
+            throw $e;
         }
     }
 
-    public function consumeMessages(callable $callback, string $queue = null, int $timeout = 60): void
+    public function consumeMessages(callable $callback, string $queue, int $timeout = 60): void
     {
         try {
             if (!$this->channel->is_open()) {
                 $this->openChannel();
             }
 
-            $queue = $queue ?? $this->queue;
-            $this->declareQueue($queue);
+            $this->channel->queue_declare($queue, true, false, false, false);
 
             $this->channel->basic_consume(
                 $queue,
@@ -127,7 +99,7 @@ class RabbitMQConnection
             }
         } catch (AMQPTimeoutException) {
             $this->closeConnection();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             Log::critical('consumeMessages :: Error consuming messages from RabbitMQ', [
                 'message' => $e->getMessage(),
                 'file' => $e->getFile(),
@@ -137,26 +109,12 @@ class RabbitMQConnection
         }
     }
 
-    private function declareQueue(string $queueName): void
-    {
-        if (!empty($queueName)) {
-            $this->channel->queue_declare(
-                $queueName,
-                true,
-                false,
-                false,
-                false
-            );
-        }
-    }
-
     private function getEnvValues(): void
     {
         $this->host = config('setebit-package.rabbitMQ.host');
         $this->port = config('setebit-package.rabbitMQ.port');
         $this->user = config('setebit-package.rabbitMQ.user');
         $this->pass = config('setebit-package.rabbitMQ.pass');
-        $this->queue = config('setebit-package.rabbitMQ.queue');
         $this->vhost = config('setebit-package.rabbitMQ.vhost');
     }
 

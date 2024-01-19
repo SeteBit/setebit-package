@@ -3,7 +3,7 @@
 namespace Setebit\Package\Listeners;
 
 use Setebit\Package\Events\TicketResultAdded;
-use Setebit\Package\Facades\RabbitMQ;
+use Setebit\Package\Jobs\SendMessageRabbitMQ;
 
 class SendTicketWinnerLoserSituationMessage
 {
@@ -45,11 +45,11 @@ class SendTicketWinnerLoserSituationMessage
             ],
         ];
 
-        RabbitMQ::sendMessageToExchange(
+        SendMessageRabbitMQ::dispatch(
             message: json_encode($payload),
+            target: $event->updateBalance ? 'ticket.winner_loser' : '',
             exchange: 'tickets',
-            routingKey: $event->updateBalance ? 'ticket.winner_loser' : '',
-            type: 'topic'
+            typeExchange: 'topic'
         );
 
         info(

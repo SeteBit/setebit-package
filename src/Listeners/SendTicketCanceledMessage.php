@@ -3,7 +3,7 @@
 namespace Setebit\Package\Listeners;
 
 use Setebit\Package\Events\TicketCanceled;
-use Setebit\Package\Facades\RabbitMQ;
+use Setebit\Package\Jobs\SendMessageRabbitMQ;
 
 class SendTicketCanceledMessage
 {
@@ -16,7 +16,7 @@ class SendTicketCanceledMessage
 
         if ($ticket->situation === 'cancelado' && empty($original['canceled_at'])) {
             info(
-                'Listener SendTicketCanceledMessage sending message to RabbitMQ.',
+                'Listener SendTicketCanceledMessage sending message to job SendMessageRabbitMQ.',
                 ['ticket_id' => $event->ticket->id]
             );
 
@@ -35,9 +35,14 @@ class SendTicketCanceledMessage
                 ],
             ];
 
-            RabbitMQ::sendMessageToExchange(message: json_encode($payload), exchange: 'tickets', type: 'topic');
+            SendMessageRabbitMQ::dispatch(
+                message: json_encode($payload),
+                target: '',
+                exchange: 'tickets',
+                typeExchange: 'topic'
+            );
 
-            info('Listener SendTicketCanceledMessage sent message to RabbitMQ.', ['ticket_id' => $event->ticket->id]);
+            info('Listener SendTicketCanceledMessage sent message to job SendMessageRabbitMQ.', ['ticket_id' => $event->ticket->id]);
         }
 
         info('Listener SendTicketCanceledMessage finished.', ['ticket_id' => $event->ticket->id]);
