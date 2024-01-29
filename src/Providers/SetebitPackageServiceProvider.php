@@ -3,7 +3,6 @@
 namespace Setebit\Package\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Setebit\Package\Console\PrizedrawsConsume;
 use Setebit\Package\Http\Middleware\BindTheHeader;
 use Setebit\Package\Services\RabbitMQConnection;
 
@@ -22,10 +21,6 @@ class SetebitPackageServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/setebit-package.php', 'setebit-package');
-
-        if ($this->app->runningInConsole()) {
-            $this->commands([PrizedrawsConsume::class]);
-        }
 
         $this->app->bind('rabbitmq', function ($app) {
             return new RabbitMQConnection();
