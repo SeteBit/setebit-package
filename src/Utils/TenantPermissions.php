@@ -67,7 +67,7 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
-    const LIST_SUBSCRIPTION = [
+    const LIST_RENT_INVOICE = [
         'name' => 'banca.listar.assinatura',
         'roles' => [self::ADMIN]
     ];
