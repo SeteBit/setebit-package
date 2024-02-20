@@ -67,7 +67,7 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
-    const LIST_RENT_INVOICE = [
+    const LIST_RENT = [
         'name' => 'banca.listar.assinatura',
         'roles' => [self::ADMIN]
     ];
@@ -165,7 +165,7 @@ class TenantPermissions
      * Pay Rent Invoice
      */
 
-    const PAY_RENT_INVOICE = [
+    const PAY_RENT = [
         'name' => 'banca.pagar.assinatura',
         'roles' => [self::ADMIN]
     ];
