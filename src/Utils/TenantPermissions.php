@@ -67,6 +67,11 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const LIST_SUBSCRIPTION = [
+        'name' => 'banca.listar.assinatura',
+        'roles' => [self::ADMIN]
+    ];
+
 
     /**
      * Update
@@ -153,6 +158,15 @@ class TenantPermissions
 
     const STORE_AD = [
         'name' => 'banca.criar.anúncio',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Pay Rent Invoice
+     */
+
+    const PAY_RENT_INVOICE = [
+        'name' => 'banca.pagar.assinatura',
         'roles' => [self::ADMIN]
     ];
 }
