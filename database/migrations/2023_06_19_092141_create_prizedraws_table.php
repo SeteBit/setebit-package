@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->enum('situation', ['todos', 'pendente', 'vencedor', 'perdedor', 'cancelado']);
             $table->decimal('max_value', 10, 4);
             $table->decimal('min_value', 10, 4);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->dateTime('draw_at');
             $table->string('award_name');
         });
