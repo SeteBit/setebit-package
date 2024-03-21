@@ -11,6 +11,7 @@ class SendTicketCreatedMessage
     {
         info('Listener SendTicketCreatedMessage handled.', ['ticket_id' => $event->ticket->id]);
         $ticket = $event->ticket;
+        $timezone = config('app.timezone');
 
         if (!in_array($ticket->situation, ['rascunho', 'aguardando pagamento'])) {
             info(
@@ -39,7 +40,7 @@ class SendTicketCreatedMessage
                             ];
                         })
                         : null,
-                    'created_at' => $ticket->created_at,
+                    'created_at' => $ticket->created_at?->timezone($timezone),
                 ],
             ];
 
