@@ -14,7 +14,6 @@ class SendTicketCanceledMessage
 
         $ticket = $event->ticket;
         $original = $event->original;
-        $timezone = config('app.timezone');
 
         if ($ticket->situation === 'cancelado' && empty($original['canceled_at'])) {
             info(
@@ -33,7 +32,7 @@ class SendTicketCanceledMessage
                     'value' => $ticket->value,
                     'commission' => $ticket->commission,
                     'prize' => $ticket->prize,
-                    'created_at' => $ticket->created_at?->timezone($timezone),
+                    'created_at' => $ticket->created_at?->toDateTimeString(),
                 ],
             ];
 

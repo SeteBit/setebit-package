@@ -13,7 +13,6 @@ class SendTicketWinnerLoserSituationMessage
 
         $ticket = $event->ticket;
         $original = $event->original;
-        $timezone = config('app.timezone');
         $situation = $this->resolveSituation($ticket->situation);
         $situationOriginal = $this->resolveSituation($original['situation']);
 
@@ -42,7 +41,7 @@ class SendTicketWinnerLoserSituationMessage
                 'value' => $ticket->value,
                 'prize' => $prize,
                 'used_bonus' => $ticket->used_bonus ?? false,
-                'created_at' => $ticket->created_at?->timezone($timezone),
+                'created_at' => $ticket->created_at?->toDateTimeString(),
             ],
         ];
 
