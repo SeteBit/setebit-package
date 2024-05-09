@@ -36,4 +36,12 @@ class BetsPermissions
         'name' => 'bets.atualizar.configuracoes',
         'roles' => [self::ADMIN]
     ];
+
+    /**
+     * Store
+     */
+    const STORE_PRE_MADE_BET = [
+        'name' => 'bets.criar.aposta_pronta',
+        'roles' => [self::ADMIN],
+    ];
 }
