@@ -18,7 +18,7 @@ class SendTicketWinnerLoserSituationMessage
 
         if ($situation === 'vencedor') {
             $action = 'winner';
-            $prize = ($original['situation'] === 'vencedor') ? $ticket->prize - $original['prize'] : $ticket->prize;
+            $prize = ($situationOriginal === 'vencedor') ? $ticket->prize - $original['prize'] : $ticket->prize;
         } elseif ($situationOriginal === 'vencedor' && $situation === 'perdedor') {
             $action = 'winner_to_loser';
             $prize = $original['prize'];

@@ -27,7 +27,7 @@ class SendTicketCreatedMessage
                     'situation' => $ticket->situation,
                     'tenant_id' => $ticket->tenant_id,
                     'value' => $ticket->value,
-                    'commission' => $ticket->commission,
+                    'commission' => data_get($ticket, 'commission', 0),
                     'prize' => $ticket->prize,
                     'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
                         ? $ticket->ticketPrizedraws->map(function ($ticketPrizedraw) {

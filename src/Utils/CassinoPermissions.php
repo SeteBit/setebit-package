@@ -11,6 +11,23 @@ class CassinoPermissions
     public static string $bind = 'cassino';
 
     /**
+     * List
+     */
+
+    const LIST_BIND = [
+        'name' => 'cassino.listar',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_GAME = [
+        'name' => 'cassino.listar.jogos',
+        'roles' => [self::ADMIN]
+    ];
+    const LIST_PROVIDER = [
+        'name' => 'cassino.listar.provedores',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
      * Update
      */
 
@@ -24,6 +41,19 @@ class CassinoPermissions
     ];
     const UPDATE_PROVIDER = [
         'name' => 'cassino.atualizar.provedor',
+        'roles' => [self::ADMIN]
+    ];
+
+    /**
+     * Destroy
+     */
+
+    const DESTROY_BIND = [
+        'name' => 'cassino.apagar',
+        'roles' => [self::ADMIN]
+    ];
+    const DESTROY_EXTRACTION = [
+        'name' => 'cassino.apagar.jogos_em_destaque',
         'roles' => [self::ADMIN]
     ];
 }

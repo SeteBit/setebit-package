@@ -2,7 +2,6 @@
 
 namespace Setebit\Package\Listeners;
 
-use Illuminate\Support\Carbon;
 use Setebit\Package\Events\TicketCanceled;
 use Setebit\Package\Jobs\SendMessageRabbitMQ;
 
@@ -30,7 +29,7 @@ class SendTicketCanceledMessage
                     'situation' => $ticket->situation,
                     'tenant_id' => $ticket->tenant_id,
                     'value' => $ticket->value,
-                    'commission' => $ticket->commission,
+                    'commission' => data_get($ticket, 'commission', 0),
                     'prize' => $ticket->prize,
                     'created_at' => $ticket->created_at?->toDateTimeString(),
                 ],
