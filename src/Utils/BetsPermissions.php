@@ -44,4 +44,12 @@ class BetsPermissions
         'name' => 'bets.criar.aposta_pronta',
         'roles' => [self::ADMIN],
     ];
+
+    /*
+     * Destroy
+     */
+    const DESTROY_PRE_MADE_BET = [
+        'name' => 'bets.apagar.aposta_pronta',
+        'roles' => [self::ADMIN],
+    ];
 }
