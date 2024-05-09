@@ -43,17 +43,4 @@ class CassinoPermissions
         'name' => 'cassino.atualizar.provedor',
         'roles' => [self::ADMIN]
     ];
-
-    /**
-     * Destroy
-     */
-
-    const DESTROY_BIND = [
-        'name' => 'cassino.apagar',
-        'roles' => [self::ADMIN]
-    ];
-    const DESTROY_EXTRACTION = [
-        'name' => 'cassino.apagar.jogos_em_destaque',
-        'roles' => [self::ADMIN]
-    ];
 }
