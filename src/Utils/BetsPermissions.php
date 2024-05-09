@@ -33,7 +33,7 @@ class BetsPermissions
         'roles' => [self::ADMIN]
     ];
     const UPDATE_TENANT_SETTING = [
-        'name' => 'bets.atualizar.configuracoes',
+        'name' => 'bets.atualizar.configurações',
         'roles' => [self::ADMIN]
     ];
 
