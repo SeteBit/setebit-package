@@ -36,6 +36,10 @@ class BetsPermissions
         'name' => 'bets.atualizar.configurações',
         'roles' => [self::ADMIN]
     ];
+    const UPDATE_ODD_BOOSTED = [
+        'name' => 'bets.atualizar.odd_aumentada',
+        'roles' => [self::ADMIN],
+    ];
 
     /**
      * Store
@@ -50,6 +54,10 @@ class BetsPermissions
      */
     const DESTROY_PRE_MADE_BET = [
         'name' => 'bets.apagar.aposta_pronta',
+        'roles' => [self::ADMIN],
+    ];
+    const DESTROY_ODD_BOOSTED = [
+        'name' => 'bets.apagar.odd_aumentada',
         'roles' => [self::ADMIN],
     ];
 }
