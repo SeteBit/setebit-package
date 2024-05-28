@@ -28,4 +28,12 @@ class UpdateBalanceBetAction
             ->withToken(config('setebit-package.tenant_token'))
             ->put(config('setebit-package.url_api_gateway') . "/users/{$userId}/balance/bet-won", $data);
     }
+
+    public function adjustment(int $userId, array $data): PromiseInterface|Response
+    {
+        return Http::retry(2, 100)
+            ->withToken(config('setebit-package.tenant_token'))
+            ->put(config('setebit-package.url_api_gateway') . "/users/{$userId}/balance/adjustment", $data);
+    }
 }
+
