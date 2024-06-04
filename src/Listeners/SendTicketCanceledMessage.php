@@ -31,6 +31,9 @@ class SendTicketCanceledMessage
                     'value' => $ticket->value,
                     'commission' => data_get($ticket, 'commission', 0),
                     'prize' => $ticket->prize,
+                    'used_bonus' => $ticket->used_bonus ?? false,
+                    'value_bonus_used' => $ticket->value_bonus_used ?? 0,
+                    'value_used' => $ticket->value_used ?? 0,
                     'created_at' => $ticket->created_at?->toDateTimeString(),
                 ],
             ];
@@ -42,7 +45,10 @@ class SendTicketCanceledMessage
                 typeExchange: 'topic'
             );
 
-            info('Listener SendTicketCanceledMessage sent message to job SendMessageRabbitMQ.', ['ticket_id' => $event->ticket->id]);
+            info(
+                'Listener SendTicketCanceledMessage sent message to job SendMessageRabbitMQ.',
+                ['ticket_id' => $event->ticket->id]
+            );
         }
 
         info('Listener SendTicketCanceledMessage finished.', ['ticket_id' => $event->ticket->id]);

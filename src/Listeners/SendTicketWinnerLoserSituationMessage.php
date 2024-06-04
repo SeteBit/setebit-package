@@ -41,6 +41,8 @@ class SendTicketWinnerLoserSituationMessage
                 'value' => $ticket->value,
                 'prize' => $prize,
                 'used_bonus' => $ticket->used_bonus ?? false,
+                'value_bonus_used' => $ticket->value_bonus_used ?? 0,
+                'value_used' => $ticket->value_used ?? 0,
                 'created_at' => $ticket->created_at?->toDateTimeString(),
             ],
         ];

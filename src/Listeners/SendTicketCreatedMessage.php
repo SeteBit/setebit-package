@@ -29,6 +29,9 @@ class SendTicketCreatedMessage
                     'value' => $ticket->value,
                     'commission' => data_get($ticket, 'commission', 0),
                     'prize' => $ticket->prize,
+                    'used_bonus' => $ticket->used_bonus ?? false,
+                    'value_bonus_used' => $ticket->value_bonus_used ?? 0,
+                    'value_used' => $ticket->value_used ?? 0,
                     'prizedraws' => $ticket->relationLoaded('ticketPrizedraws')
                         ? $ticket->ticketPrizedraws->map(function ($ticketPrizedraw) {
                             return [
