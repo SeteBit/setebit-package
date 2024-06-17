@@ -12,16 +12,16 @@ class SendTicketWinnerLoserSituationMessage
         info('Listener SendTicketSituationChangeMessage handled.', ['ticket_id' => $event->ticket->id]);
 
         $ticket = $event->ticket;
-        $original = $event->original;
-        $situation = $this->resolveSituation($ticket->situation);
-        $situationOriginal = $this->resolveSituation($original['situation']);
+        $originalTicket = $event->original;
+        $situationTicket = $this->resolveSituation($ticket->situation);
+        $situationOriginalTicket = $this->resolveSituation($originalTicket['situation']);
 
-        if ($situation === 'vencedor') {
+        if ($situationTicket === 'vencedor') {
             $action = 'winner';
-            $prize = ($situationOriginal === 'vencedor') ? $ticket->prize - $original['prize'] : $ticket->prize;
-        } elseif ($situationOriginal === 'vencedor' && $situation === 'perdedor') {
+            $prize = ($situationOriginalTicket === 'vencedor') ? $ticket->prize - $originalTicket['prize'] : $ticket->prize;
+        } elseif ($situationOriginalTicket === 'vencedor' && $situationTicket === 'perdedor') {
             $action = 'winner_to_loser';
-            $prize = $original['prize'];
+            $prize = $originalTicket['prize'];
         } else {
             return;
         }
@@ -36,7 +36,7 @@ class SendTicketWinnerLoserSituationMessage
                 'id' => $ticket->id,
                 'user_id' => $ticket->user_id,
                 'code' => $ticket->code,
-                'situation' => $situation,
+                'situation' => $situationTicket,
                 'tenant_id' => $ticket->tenant_id,
                 'value' => $ticket->value,
                 'prize' => $prize,

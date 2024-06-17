@@ -11,8 +11,9 @@ class SendTicketCreatedMessage
     {
         info('Listener SendTicketCreatedMessage handled.', ['ticket_id' => $event->ticket->id]);
         $ticket = $event->ticket;
+        $situationTicket = $this->resolveSituation($ticket->situation);
 
-        if (!in_array($ticket->situation, ['rascunho', 'aguardando pagamento'])) {
+        if (!in_array($situationTicket, ['rascunho', 'aguardando pagamento'])) {
             info(
                 'Listener SendTicketCreatedMessage sending message to RabbitMQ.',
                 ['ticket_id' => $event->ticket->id]
@@ -24,7 +25,7 @@ class SendTicketCreatedMessage
                     'id' => $ticket->id,
                     'user_id' => $ticket->user_id,
                     'code' => $ticket->code,
-                    'situation' => $ticket->situation,
+                    'situation' => $situationTicket,
                     'tenant_id' => $ticket->tenant_id,
                     'value' => $ticket->value,
                     'commission' => data_get($ticket, 'commission', 0),
@@ -57,5 +58,14 @@ class SendTicketCreatedMessage
         }
 
         info('Listener SendTicketCreatedMessage finished.', ['ticket_id' => $event->ticket->id]);
+    }
+
+    private function resolveSituation(string|\BackedEnum $situation): string
+    {
+        if ($situation instanceof \BackedEnum) {
+            return $situation->value;
+        }
+
+        return $situation;
     }
 }

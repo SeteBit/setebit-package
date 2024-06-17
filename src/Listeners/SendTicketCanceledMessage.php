@@ -12,9 +12,10 @@ class SendTicketCanceledMessage
         info('Listener SendTicketCanceledMessage handled.', ['ticket_id' => $event->ticket->id]);
 
         $ticket = $event->ticket;
-        $original = $event->original;
+        $originalTicket = $event->original;
+        $situationTicket = $this->resolveSituation($ticket->situation);
 
-        if ($ticket->situation === 'cancelado' && empty($original['canceled_at'])) {
+        if ($situationTicket === 'cancelado' && empty($originalTicket['canceled_at'])) {
             info(
                 'Listener SendTicketCanceledMessage sending message to job SendMessageRabbitMQ.',
                 ['ticket_id' => $event->ticket->id]
@@ -26,7 +27,7 @@ class SendTicketCanceledMessage
                     'id' => $ticket->id,
                     'user_id' => $ticket->user_id,
                     'code' => $ticket->code,
-                    'situation' => $ticket->situation,
+                    'situation' => $situationTicket,
                     'tenant_id' => $ticket->tenant_id,
                     'value' => $ticket->value,
                     'commission' => data_get($ticket, 'commission', 0),
@@ -52,5 +53,14 @@ class SendTicketCanceledMessage
         }
 
         info('Listener SendTicketCanceledMessage finished.', ['ticket_id' => $event->ticket->id]);
+    }
+
+    private function resolveSituation(string|\BackedEnum $situation): string
+    {
+        if ($situation instanceof \BackedEnum) {
+            return $situation->value;
+        }
+
+        return $situation;
     }
 }
