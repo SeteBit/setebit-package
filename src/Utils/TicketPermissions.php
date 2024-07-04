@@ -25,8 +25,4 @@ class TicketPermissions
         'name' => 'bilhete.cancelar',
         'roles' => [self::ADMIN, self::MANAGER, self::OPERATOR]
     ];
-    const MARK_AS_PAID_TICKET = [
-        'name' => 'bilhete.pagar',
-        'roles' => [self::ADMIN, self::OPERATOR]
-    ];
 }
