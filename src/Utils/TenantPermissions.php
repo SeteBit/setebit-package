@@ -47,11 +47,6 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
-    const LIST_TENANT_REGULATION = [
-        'name' => 'banca.listar.regulamento',
-        'roles' => [self::ADMIN, self::OPERATOR, self::CUSTOMER]
-    ];
-
     const LIST_TENANT_PREFERENCES = [
         'name' => 'banca.listar.preferências',
         'roles' => [self::ADMIN]
@@ -72,6 +67,10 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const LIST_WARNING = [
+        'name' => 'banca.listar.aviso',
+        'roles' => [self::ADMIN]
+    ];
 
     /**
      * Update
@@ -127,6 +126,11 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const UPDATE_WARNING = [
+        'name' => 'banca.atualizar.aviso',
+        'roles' => [self::ADMIN]
+    ];
+
     /**
      * Destroy
      */
@@ -146,6 +150,10 @@ class TenantPermissions
         'roles' => [self::ADMIN]
     ];
 
+    const DESTROY_WARNING = [
+        'name' => 'banca.apagar.aviso',
+        'roles' => [self::ADMIN]
+    ];
 
     /**
      * Store
@@ -158,6 +166,11 @@ class TenantPermissions
 
     const STORE_AD = [
         'name' => 'banca.criar.anúncio',
+        'roles' => [self::ADMIN]
+    ];
+
+    const STORE_WARNING = [
+        'name' => 'banca.criar.aviso',
         'roles' => [self::ADMIN]
     ];
 
