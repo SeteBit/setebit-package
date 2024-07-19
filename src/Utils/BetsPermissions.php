@@ -32,6 +32,10 @@ class BetsPermissions
         'name' => 'bets.atualizar.mercado',
         'roles' => [self::ADMIN]
     ];
+    const UPDATE_SPORT_SETTING = [
+        'name' => 'bets.atualizar.esporte',
+        'roles' => [self::ADMIN]
+    ];
     const UPDATE_TENANT_SETTING = [
         'name' => 'bets.atualizar.configurações',
         'roles' => [self::ADMIN]
